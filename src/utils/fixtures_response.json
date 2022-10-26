@@ -1,0 +1,3623 @@
+{
+  "get": "fixtures",
+  "parameters": {
+    "live": "all"
+  },
+  "errors": [],
+  "results": 24,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "fixture": {
+        "id": 860428,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": null,
+          "name": "Centrul de Fotbal Buftea Teren Natural",
+          "city": "Buftea"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 23
+        }
+      },
+      "league": {
+        "id": 886,
+        "name": "UEFA U17 Championship - Qualification",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/886.png",
+        "flag": null,
+        "season": 2023,
+        "round": "Qualifying Round - 4"
+      },
+      "teams": {
+        "home": {
+          "id": 17973,
+          "name": "Romania U17",
+          "logo": "https://media.api-sports.io/football/teams/17973.png",
+          "winner": null
+        },
+        "away": {
+          "id": 17948,
+          "name": "Denmark U17",
+          "logo": "https://media.api-sports.io/football/teams/17948.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 860432,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 2792,
+          "name": "Nye Fredrikstad Stadion",
+          "city": "Fredrikstad"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 20
+        }
+      },
+      "league": {
+        "id": 886,
+        "name": "UEFA U17 Championship - Qualification",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/886.png",
+        "flag": null,
+        "season": 2023,
+        "round": "Qualifying Round - 4"
+      },
+      "teams": {
+        "home": {
+          "id": 17938,
+          "name": "Armenia U17",
+          "logo": "https://media.api-sports.io/football/teams/17938.png",
+          "winner": null
+        },
+        "away": {
+          "id": 17941,
+          "name": "Belarus U17",
+          "logo": "https://media.api-sports.io/football/teams/17941.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 860433,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 1193,
+          "name": "Sarpsborg Stadion",
+          "city": "Sarpsborg"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 20
+        }
+      },
+      "league": {
+        "id": 886,
+        "name": "UEFA U17 Championship - Qualification",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/886.png",
+        "flag": null,
+        "season": 2023,
+        "round": "Qualifying Round - 4"
+      },
+      "teams": {
+        "home": {
+          "id": 17969,
+          "name": "Norway U17",
+          "logo": "https://media.api-sports.io/football/teams/17969.png",
+          "winner": null
+        },
+        "away": {
+          "id": 17972,
+          "name": "Republic of Ireland U17",
+          "logo": "https://media.api-sports.io/football/teams/17972.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 874194,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 202,
+          "name": "Stadion Bijeli Brijeg",
+          "city": "Mostar"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 23
+        }
+      },
+      "league": {
+        "id": 315,
+        "name": "Premijer Liga",
+        "country": "Bosnia",
+        "logo": "https://media.api-sports.io/football/leagues/315.png",
+        "flag": "https://media.api-sports.io/flags/ba.svg",
+        "season": 2022,
+        "round": "Regular Season - 7"
+      },
+      "teams": {
+        "home": {
+          "id": 588,
+          "name": "Zrinjski",
+          "logo": "https://media.api-sports.io/football/teams/588.png",
+          "winner": null
+        },
+        "away": {
+          "id": 3361,
+          "name": "Tuzla City",
+          "logo": "https://media.api-sports.io/football/teams/3361.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 884067,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 2287,
+          "name": "Stadion Miejski",
+          "city": "Jastrzębie Zdrój"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 21
+        }
+      },
+      "league": {
+        "id": 109,
+        "name": "II Liga - East",
+        "country": "Poland",
+        "logo": "https://media.api-sports.io/football/leagues/109.png",
+        "flag": "https://media.api-sports.io/flags/pl.svg",
+        "season": 2022,
+        "round": "Regular Season - 17"
+      },
+      "teams": {
+        "home": {
+          "id": 3486,
+          "name": "Jastrzębie",
+          "logo": "https://media.api-sports.io/football/teams/3486.png",
+          "winner": false
+        },
+        "away": {
+          "id": 6945,
+          "name": "Olimpia Elbląg",
+          "logo": "https://media.api-sports.io/football/teams/6945.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 13,
+            "extra": null
+          },
+          "team": {
+            "id": 6945,
+            "name": "Olimpia Elbląg",
+            "logo": "https://media.api-sports.io/football/teams/6945.png"
+          },
+          "player": {
+            "id": 76342,
+            "name": "Y. Senkevich"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 932104,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T14:55:00+00:00",
+        "timestamp": 1666796100,
+        "periods": {
+          "first": 1666796100,
+          "second": null
+        },
+        "venue": {
+          "id": 1379,
+          "name": "Al-Shoalah Club Stadium",
+          "city": "Al Kharj"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 26
+        }
+      },
+      "league": {
+        "id": 308,
+        "name": "Division 1",
+        "country": "Saudi-Arabia",
+        "logo": "https://media.api-sports.io/football/leagues/308.png",
+        "flag": "https://media.api-sports.io/flags/sa.svg",
+        "season": 2022,
+        "round": "Regular Season - 9"
+      },
+      "teams": {
+        "home": {
+          "id": 2957,
+          "name": "Al Shoalah",
+          "logo": "https://media.api-sports.io/football/teams/2957.png",
+          "winner": null
+        },
+        "away": {
+          "id": 2933,
+          "name": "Al-Qadisiyah FC",
+          "logo": "https://media.api-sports.io/football/teams/2933.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 932105,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:05:00+00:00",
+        "timestamp": 1666796700,
+        "periods": {
+          "first": 1666796700,
+          "second": null
+        },
+        "venue": {
+          "id": null,
+          "name": "Department of Education Stadium",
+          "city": "Unaizah"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 17
+        }
+      },
+      "league": {
+        "id": 308,
+        "name": "Division 1",
+        "country": "Saudi-Arabia",
+        "logo": "https://media.api-sports.io/football/leagues/308.png",
+        "flag": "https://media.api-sports.io/flags/sa.svg",
+        "season": 2022,
+        "round": "Regular Season - 9"
+      },
+      "teams": {
+        "home": {
+          "id": 2971,
+          "name": "Al Arabi SC",
+          "logo": "https://media.api-sports.io/football/teams/2971.png",
+          "winner": null
+        },
+        "away": {
+          "id": 2927,
+          "name": "Najran",
+          "logo": "https://media.api-sports.io/football/teams/2927.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 967223,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 10636,
+          "name": "Alexandria Stadium",
+          "city": "Alexandria"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 21
+        }
+      },
+      "league": {
+        "id": 233,
+        "name": "Premier League",
+        "country": "Egypt",
+        "logo": "https://media.api-sports.io/football/leagues/233.png",
+        "flag": "https://media.api-sports.io/flags/eg.svg",
+        "season": 2022,
+        "round": "Regular Season - 2"
+      },
+      "teams": {
+        "home": {
+          "id": 15736,
+          "name": "Pharco",
+          "logo": "https://media.api-sports.io/football/teams/15736.png",
+          "winner": null
+        },
+        "away": {
+          "id": 1576,
+          "name": "Haras El Hodood",
+          "logo": "https://media.api-sports.io/football/teams/1576.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": []
+    },
+    {
+      "fixture": {
+        "id": 968147,
+        "referee": "Peiman Simani, Finland",
+        "timezone": "UTC",
+        "date": "2022-10-26T15:00:00+00:00",
+        "timestamp": 1666796400,
+        "periods": {
+          "first": 1666796400,
+          "second": null
+        },
+        "venue": {
+          "id": 19205,
+          "name": "Lemonsoft Stadion",
+          "city": "Vaasa"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 21
+        }
+      },
+      "league": {
+        "id": 244,
+        "name": "Veikkausliiga",
+        "country": "Finland",
+        "logo": "https://media.api-sports.io/football/leagues/244.png",
+        "flag": "https://media.api-sports.io/flags/fi.svg",
+        "season": 2022,
+        "round": "Conference League Play-offs - Final"
+      },
+      "teams": {
+        "home": {
+          "id": 650,
+          "name": "vaasa PS",
+          "logo": "https://media.api-sports.io/football/teams/650.png",
+          "winner": false
+        },
+        "away": {
+          "id": 2080,
+          "name": "haka",
+          "logo": "https://media.api-sports.io/football/teams/2080.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 5,
+            "extra": null
+          },
+          "team": {
+            "id": 2080,
+            "name": "haka",
+            "logo": "https://media.api-sports.io/football/teams/2080.png"
+          },
+          "player": {
+            "id": 29846,
+            "name": "L. Erwin"
+          },
+          "assist": {
+            "id": 26161,
+            "name": "L. Rogerson"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 11,
+            "extra": null
+          },
+          "team": {
+            "id": 2080,
+            "name": "haka",
+            "logo": "https://media.api-sports.io/football/teams/2080.png"
+          },
+          "player": {
+            "id": 55340,
+            "name": "J. Arthur"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 874381,
+        "referee": "Walter Altmann, Austria",
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": 145,
+          "name": "Allianz Stadion",
+          "city": "Wien"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 65
+        }
+      },
+      "league": {
+        "id": 218,
+        "name": "Bundesliga",
+        "country": "Austria",
+        "logo": "https://media.api-sports.io/football/leagues/218.png",
+        "flag": "https://media.api-sports.io/flags/at.svg",
+        "season": 2022,
+        "round": "Regular Season - 5"
+      },
+      "teams": {
+        "home": {
+          "id": 781,
+          "name": "Rapid Vienna",
+          "logo": "https://media.api-sports.io/football/teams/781.png",
+          "winner": true
+        },
+        "away": {
+          "id": 1072,
+          "name": "TSV Hartberg",
+          "logo": "https://media.api-sports.io/football/teams/1072.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 7,
+            "extra": null
+          },
+          "team": {
+            "id": 1072,
+            "name": "TSV Hartberg",
+            "logo": "https://media.api-sports.io/football/teams/1072.png"
+          },
+          "player": {
+            "id": 7749,
+            "name": "T. Kainz"
+          },
+          "assist": {
+            "id": 7582,
+            "name": "L. Fadinger"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 14,
+            "extra": null
+          },
+          "team": {
+            "id": 1072,
+            "name": "TSV Hartberg",
+            "logo": "https://media.api-sports.io/football/teams/1072.png"
+          },
+          "player": {
+            "id": 162733,
+            "name": "R. Providence"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 26,
+            "extra": null
+          },
+          "team": {
+            "id": 781,
+            "name": "Rapid Vienna",
+            "logo": "https://media.api-sports.io/football/teams/781.png"
+          },
+          "player": {
+            "id": 420,
+            "name": "G. Burgstaller"
+          },
+          "assist": {
+            "id": 956,
+            "name": "T. Schick"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 37,
+            "extra": null
+          },
+          "team": {
+            "id": 781,
+            "name": "Rapid Vienna",
+            "logo": "https://media.api-sports.io/football/teams/781.png"
+          },
+          "player": {
+            "id": 420,
+            "name": "G. Burgstaller"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 44,
+            "extra": null
+          },
+          "team": {
+            "id": 1072,
+            "name": "TSV Hartberg",
+            "logo": "https://media.api-sports.io/football/teams/1072.png"
+          },
+          "player": {
+            "id": 7300,
+            "name": "O. Aydin"
+          },
+          "assist": {
+            "id": 7769,
+            "name": "D. Tadic"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 53,
+            "extra": null
+          },
+          "team": {
+            "id": 781,
+            "name": "Rapid Vienna",
+            "logo": "https://media.api-sports.io/football/teams/781.png"
+          },
+          "player": {
+            "id": 420,
+            "name": "G. Burgstaller"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 883439,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": 3218,
+          "name": "OKMK Sport Majmuasi",
+          "city": "Almalyk"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 90
+        }
+      },
+      "league": {
+        "id": 369,
+        "name": "Super League",
+        "country": "Uzbekistan",
+        "logo": "https://media.api-sports.io/football/leagues/369.png",
+        "flag": "https://media.api-sports.io/flags/uz.svg",
+        "season": 2022,
+        "round": "Regular Season - 23"
+      },
+      "teams": {
+        "home": {
+          "id": 4219,
+          "name": "Olmaliq",
+          "logo": "https://media.api-sports.io/football/teams/4219.png",
+          "winner": true
+        },
+        "away": {
+          "id": 4224,
+          "name": "Dinamo Samarqand",
+          "logo": "https://media.api-sports.io/football/teams/4224.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 4,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 3,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 12,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": null,
+            "name": "S. Haghnazari"
+          },
+          "assist": {
+            "id": null,
+            "name": "D. Akhmadaliev"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 20,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 120777,
+            "name": "M. Boakye"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 29,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 53827,
+            "name": "A. Ismailov"
+          },
+          "assist": {
+            "id": 34315,
+            "name": "S. Gadoev"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": "S. Mahmuxojiyev"
+          },
+          "assist": {
+            "id": null,
+            "name": "J. Mannonov"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": null,
+            "name": "M. Khasanov"
+          },
+          "assist": {
+            "id": 34320,
+            "name": "S. Tursunov"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 97562,
+            "name": "A. Dzhalilov"
+          },
+          "assist": {
+            "id": null,
+            "name": "S. Haghnazari"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 48,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 58,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 53827,
+            "name": "A. Ismailov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 61,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 97562,
+            "name": "A. Dzhalilov"
+          },
+          "assist": {
+            "id": 34315,
+            "name": "S. Gadoev"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 66,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": null,
+            "name": "E. Begimov"
+          },
+          "assist": {
+            "id": null,
+            "name": "D. Akhmadaliev"
+          },
+          "type": "subst",
+          "detail": "Substitution 3",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 66,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 49078,
+            "name": "A. Filiposyan"
+          },
+          "assist": {
+            "id": 34315,
+            "name": "S. Gadoev"
+          },
+          "type": "subst",
+          "detail": "Substitution 4",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 68,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": "M. Musurmonov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 71,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": "J. Malikov"
+          },
+          "assist": {
+            "id": null,
+            "name": "M. Musurmonov"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 75,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 77,
+            "extra": null
+          },
+          "team": {
+            "id": 4219,
+            "name": "Olmaliq",
+            "logo": "https://media.api-sports.io/football/teams/4219.png"
+          },
+          "player": {
+            "id": 24612,
+            "name": "G. Papava"
+          },
+          "assist": {
+            "id": 73721,
+            "name": "S. Rakhmanov"
+          },
+          "type": "subst",
+          "detail": "Substitution 5",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 81,
+            "extra": null
+          },
+          "team": {
+            "id": 4224,
+            "name": "Dinamo Samarqand",
+            "logo": "https://media.api-sports.io/football/teams/4224.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 883442,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": null,
+          "name": "O'zbekiston Stadioni",
+          "city": "Yaypan"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 90
+        }
+      },
+      "league": {
+        "id": 369,
+        "name": "Super League",
+        "country": "Uzbekistan",
+        "logo": "https://media.api-sports.io/football/leagues/369.png",
+        "flag": "https://media.api-sports.io/flags/uz.svg",
+        "season": 2022,
+        "round": "Regular Season - 23"
+      },
+      "teams": {
+        "home": {
+          "id": 4212,
+          "name": "Kokand-1912",
+          "logo": "https://media.api-sports.io/football/teams/4212.png",
+          "winner": null
+        },
+        "away": {
+          "id": 4223,
+          "name": "Sogdiana",
+          "logo": "https://media.api-sports.io/football/teams/4223.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 11,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": null,
+            "name": "J. Khasanov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 20,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": null,
+            "name": "I. Vakhobov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 30,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": 73732,
+            "name": "S. Norbekov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Var",
+          "detail": "Goal Disallowed - offside",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 50,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Khozhimirzaev"
+          },
+          "assist": {
+            "id": null,
+            "name": "S. Etovkuziev"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 58,
+            "extra": null
+          },
+          "team": {
+            "id": 4223,
+            "name": "Sogdiana",
+            "logo": "https://media.api-sports.io/football/teams/4223.png"
+          },
+          "player": {
+            "id": null,
+            "name": "K. Gofurov"
+          },
+          "assist": {
+            "id": null,
+            "name": "D. Nasridinov"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 62,
+            "extra": null
+          },
+          "team": {
+            "id": 4223,
+            "name": "Sogdiana",
+            "logo": "https://media.api-sports.io/football/teams/4223.png"
+          },
+          "player": {
+            "id": null,
+            "name": "S. Kulmatov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 63,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": 73732,
+            "name": "S. Norbekov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Penalty",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 68,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": null,
+            "name": "B. Toshmirzaev"
+          },
+          "assist": {
+            "id": null,
+            "name": "J. Khasanov"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 70,
+            "extra": null
+          },
+          "team": {
+            "id": 4223,
+            "name": "Sogdiana",
+            "logo": "https://media.api-sports.io/football/teams/4223.png"
+          },
+          "player": {
+            "id": 73463,
+            "name": "S. Salomov"
+          },
+          "assist": {
+            "id": 80245,
+            "name": "J. Obsivac"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 70,
+            "extra": null
+          },
+          "team": {
+            "id": 4212,
+            "name": "Kokand-1912",
+            "logo": "https://media.api-sports.io/football/teams/4212.png"
+          },
+          "player": {
+            "id": 73539,
+            "name": "S. Lukic"
+          },
+          "assist": {
+            "id": 73732,
+            "name": "S. Norbekov"
+          },
+          "type": "subst",
+          "detail": "Substitution 3",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 76,
+            "extra": null
+          },
+          "team": {
+            "id": 4223,
+            "name": "Sogdiana",
+            "logo": "https://media.api-sports.io/football/teams/4223.png"
+          },
+          "player": {
+            "id": null,
+            "name": "K. Gofurov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 87,
+            "extra": null
+          },
+          "team": {
+            "id": 4223,
+            "name": "Sogdiana",
+            "logo": "https://media.api-sports.io/football/teams/4223.png"
+          },
+          "player": {
+            "id": null,
+            "name": "K. Gofurov"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 942896,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": 19174,
+          "name": "Solomon Mahlangu Stadium",
+          "city": "KwaMhlanga"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 89
+        }
+      },
+      "league": {
+        "id": 289,
+        "name": "1st Division",
+        "country": "South-Africa",
+        "logo": "https://media.api-sports.io/football/leagues/289.png",
+        "flag": "https://media.api-sports.io/flags/za.svg",
+        "season": 2022,
+        "round": "Regular Season - 10"
+      },
+      "teams": {
+        "home": {
+          "id": 19997,
+          "name": "Casric Stars",
+          "logo": "https://media.api-sports.io/football/teams/19997.png",
+          "winner": false
+        },
+        "away": {
+          "id": 2693,
+          "name": "Polokwane City",
+          "logo": "https://media.api-sports.io/football/teams/2693.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 3
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 2
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 18,
+            "extra": null
+          },
+          "team": {
+            "id": 2693,
+            "name": "Polokwane City",
+            "logo": "https://media.api-sports.io/football/teams/2693.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 45,
+            "extra": 2
+          },
+          "team": {
+            "id": 2693,
+            "name": "Polokwane City",
+            "logo": "https://media.api-sports.io/football/teams/2693.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 58,
+            "extra": null
+          },
+          "team": {
+            "id": 2693,
+            "name": "Polokwane City",
+            "logo": "https://media.api-sports.io/football/teams/2693.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 65,
+            "extra": null
+          },
+          "team": {
+            "id": 19997,
+            "name": "Casric Stars",
+            "logo": "https://media.api-sports.io/football/teams/19997.png"
+          },
+          "player": {
+            "id": null,
+            "name": "K. Mosadi"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 942897,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": 12150,
+          "name": "Windhoek Draught Park Stadium",
+          "city": "Kimberley"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 87
+        }
+      },
+      "league": {
+        "id": 289,
+        "name": "1st Division",
+        "country": "South-Africa",
+        "logo": "https://media.api-sports.io/football/leagues/289.png",
+        "flag": "https://media.api-sports.io/flags/za.svg",
+        "season": 2022,
+        "round": "Regular Season - 10"
+      },
+      "teams": {
+        "home": {
+          "id": 10561,
+          "name": "Hungry Lions",
+          "logo": "https://media.api-sports.io/football/teams/10561.png",
+          "winner": null
+        },
+        "away": {
+          "id": 10569,
+          "name": "University of Pretoria",
+          "logo": "https://media.api-sports.io/football/teams/10569.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 10561,
+            "name": "Hungry Lions",
+            "logo": "https://media.api-sports.io/football/teams/10561.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Van Rooi"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 52,
+            "extra": null
+          },
+          "team": {
+            "id": 10561,
+            "name": "Hungry Lions",
+            "logo": "https://media.api-sports.io/football/teams/10561.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Red Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 56,
+            "extra": null
+          },
+          "team": {
+            "id": 10569,
+            "name": "University of Pretoria",
+            "logo": "https://media.api-sports.io/football/teams/10569.png"
+          },
+          "player": {
+            "id": 98935,
+            "name": "S. Julies"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 953371,
+        "referee": "C. Ciochirca",
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": 1135,
+          "name": "Sportpark De Toekomst",
+          "city": "Amsterdam-Duivendrecht"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 64
+        }
+      },
+      "league": {
+        "id": 14,
+        "name": "UEFA Youth League",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/14.png",
+        "flag": null,
+        "season": 2022,
+        "round": "Group Stage - 5"
+      },
+      "teams": {
+        "home": {
+          "id": 7881,
+          "name": "Ajax U19",
+          "logo": "https://media.api-sports.io/football/teams/7881.png",
+          "winner": true
+        },
+        "away": {
+          "id": 7909,
+          "name": "Liverpool U19",
+          "logo": "https://media.api-sports.io/football/teams/7909.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 3,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 2,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 15,
+            "extra": null
+          },
+          "team": {
+            "id": 7881,
+            "name": "Ajax U19",
+            "logo": "https://media.api-sports.io/football/teams/7881.png"
+          },
+          "player": {
+            "id": 336578,
+            "name": "J. Banel"
+          },
+          "assist": {
+            "id": null,
+            "name": "R. Sarfo"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 26,
+            "extra": null
+          },
+          "team": {
+            "id": 7909,
+            "name": "Liverpool U19",
+            "logo": "https://media.api-sports.io/football/teams/7909.png"
+          },
+          "player": {
+            "id": null,
+            "name": "D. Corness"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 39,
+            "extra": null
+          },
+          "team": {
+            "id": 7909,
+            "name": "Liverpool U19",
+            "logo": "https://media.api-sports.io/football/teams/7909.png"
+          },
+          "player": {
+            "id": 158698,
+            "name": "J. Quansah"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 41,
+            "extra": null
+          },
+          "team": {
+            "id": 7881,
+            "name": "Ajax U19",
+            "logo": "https://media.api-sports.io/football/teams/7881.png"
+          },
+          "player": {
+            "id": 336674,
+            "name": "G. O. Misehouy"
+          },
+          "assist": {
+            "id": null,
+            "name": "R. Sarfo"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 44,
+            "extra": null
+          },
+          "team": {
+            "id": 7909,
+            "name": "Liverpool U19",
+            "logo": "https://media.api-sports.io/football/teams/7909.png"
+          },
+          "player": {
+            "id": null,
+            "name": "T. Kone-Doherty"
+          },
+          "assist": {
+            "id": 343576,
+            "name": "B. Doak"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 61,
+            "extra": null
+          },
+          "team": {
+            "id": 7881,
+            "name": "Ajax U19",
+            "logo": "https://media.api-sports.io/football/teams/7881.png"
+          },
+          "player": {
+            "id": null,
+            "name": "N. Viereck"
+          },
+          "assist": {
+            "id": null,
+            "name": "T. Gooijer"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 61,
+            "extra": null
+          },
+          "team": {
+            "id": 7881,
+            "name": "Ajax U19",
+            "logo": "https://media.api-sports.io/football/teams/7881.png"
+          },
+          "player": {
+            "id": null,
+            "name": "D. Kalokoh"
+          },
+          "assist": {
+            "id": null,
+            "name": "R. Sarfo"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 63,
+            "extra": null
+          },
+          "team": {
+            "id": 7881,
+            "name": "Ajax U19",
+            "logo": "https://media.api-sports.io/football/teams/7881.png"
+          },
+          "player": {
+            "id": null,
+            "name": "D. Kalokoh"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 953373,
+        "referee": "D. Šmajc",
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": null,
+          "name": "Centro Deportivo Alcalá de Henares",
+          "city": "Madrid"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 65
+        }
+      },
+      "league": {
+        "id": 14,
+        "name": "UEFA Youth League",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/14.png",
+        "flag": null,
+        "season": 2022,
+        "round": "Group Stage - 5"
+      },
+      "teams": {
+        "home": {
+          "id": 7884,
+          "name": "Atlético Madrid U19",
+          "logo": "https://media.api-sports.io/football/teams/7884.png",
+          "winner": true
+        },
+        "away": {
+          "id": 7886,
+          "name": "Bayer Leverkusen U19",
+          "logo": "https://media.api-sports.io/football/teams/7886.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 3,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 2,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 12,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "E. Mbomio Angue"
+          },
+          "assist": {
+            "id": null,
+            "name": "I. Kostis"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 17,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Raihani"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 20,
+            "extra": null
+          },
+          "team": {
+            "id": 7886,
+            "name": "Bayer Leverkusen U19",
+            "logo": "https://media.api-sports.io/football/teams/7886.png"
+          },
+          "player": {
+            "id": 280430,
+            "name": "J. Eze"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 21,
+            "extra": null
+          },
+          "team": {
+            "id": 7886,
+            "name": "Bayer Leverkusen U19",
+            "logo": "https://media.api-sports.io/football/teams/7886.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Bance"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 29,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Nino"
+          },
+          "assist": {
+            "id": null,
+            "name": "A. Raihani"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 45,
+            "extra": 2
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Nino"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Nino"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "S. El Jebari"
+          },
+          "assist": {
+            "id": null,
+            "name": "F. Urzain"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 46,
+            "extra": null
+          },
+          "team": {
+            "id": 7886,
+            "name": "Bayer Leverkusen U19",
+            "logo": "https://media.api-sports.io/football/teams/7886.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Aourir"
+          },
+          "assist": {
+            "id": null,
+            "name": "A. Bance"
+          },
+          "type": "subst",
+          "detail": "Substitution 1",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 50,
+            "extra": null
+          },
+          "team": {
+            "id": 7886,
+            "name": "Bayer Leverkusen U19",
+            "logo": "https://media.api-sports.io/football/teams/7886.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 58,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "I. Vasiljevic"
+          },
+          "assist": {
+            "id": null,
+            "name": "A. Santamaria"
+          },
+          "type": "subst",
+          "detail": "Substitution 3",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 58,
+            "extra": null
+          },
+          "team": {
+            "id": 7884,
+            "name": "Atlético Madrid U19",
+            "logo": "https://media.api-sports.io/football/teams/7884.png"
+          },
+          "player": {
+            "id": null,
+            "name": "J. San Jose"
+          },
+          "assist": {
+            "id": null,
+            "name": "A. Gismera"
+          },
+          "type": "subst",
+          "detail": "Substitution 4",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 59,
+            "extra": null
+          },
+          "team": {
+            "id": 7886,
+            "name": "Bayer Leverkusen U19",
+            "logo": "https://media.api-sports.io/football/teams/7886.png"
+          },
+          "player": {
+            "id": null,
+            "name": "J. Kanga"
+          },
+          "assist": {
+            "id": null,
+            "name": "K. Izekor"
+          },
+          "type": "subst",
+          "detail": "Substitution 2",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 963222,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": 2213,
+          "name": "Makareio Stadio",
+          "city": "Lefkosía"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 63
+        }
+      },
+      "league": {
+        "id": 321,
+        "name": "Cup",
+        "country": "Cyprus",
+        "logo": "https://media.api-sports.io/football/leagues/321.png",
+        "flag": "https://media.api-sports.io/flags/cy.svg",
+        "season": 2022,
+        "round": "1st Round"
+      },
+      "teams": {
+        "home": {
+          "id": 3419,
+          "name": "PAEEK",
+          "logo": "https://media.api-sports.io/football/teams/3419.png",
+          "winner": false
+        },
+        "away": {
+          "id": 2269,
+          "name": "Anorthosis",
+          "logo": "https://media.api-sports.io/football/teams/2269.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 2
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 45,
+            "extra": null
+          },
+          "team": {
+            "id": 2269,
+            "name": "Anorthosis",
+            "logo": "https://media.api-sports.io/football/teams/2269.png"
+          },
+          "player": {
+            "id": 41160,
+            "name": "H. Ferreira"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 55,
+            "extra": null
+          },
+          "team": {
+            "id": 2269,
+            "name": "Anorthosis",
+            "logo": "https://media.api-sports.io/football/teams/2269.png"
+          },
+          "player": {
+            "id": 41160,
+            "name": "H. Ferreira"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 965587,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": 1564,
+          "name": "Stade Olympique de Radès",
+          "city": "Radès"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 90
+        }
+      },
+      "league": {
+        "id": 202,
+        "name": "Ligue 1",
+        "country": "Tunisia",
+        "logo": "https://media.api-sports.io/football/leagues/202.png",
+        "flag": "https://media.api-sports.io/flags/tn.svg",
+        "season": 2022,
+        "round": "Regular Season - 2"
+      },
+      "teams": {
+        "home": {
+          "id": 980,
+          "name": "ES Tunis",
+          "logo": "https://media.api-sports.io/football/teams/980.png",
+          "winner": true
+        },
+        "away": {
+          "id": 6252,
+          "name": "CS Chebba",
+          "logo": "https://media.api-sports.io/football/teams/6252.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 2,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 4,
+            "extra": null
+          },
+          "team": {
+            "id": 980,
+            "name": "ES Tunis",
+            "logo": "https://media.api-sports.io/football/teams/980.png"
+          },
+          "player": {
+            "id": 72142,
+            "name": "M. Zraiq"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 33,
+            "extra": null
+          },
+          "team": {
+            "id": 980,
+            "name": "ES Tunis",
+            "logo": "https://media.api-sports.io/football/teams/980.png"
+          },
+          "player": {
+            "id": 49418,
+            "name": "H. Elhouni"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 35,
+            "extra": null
+          },
+          "team": {
+            "id": 6252,
+            "name": "CS Chebba",
+            "logo": "https://media.api-sports.io/football/teams/6252.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Bousseta"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 965799,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": null,
+          "name": "Stade Dominique Diur",
+          "city": "Kolwezi"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 81
+        }
+      },
+      "league": {
+        "id": 424,
+        "name": "Ligue 1",
+        "country": "Congo-DR",
+        "logo": "https://media.api-sports.io/football/leagues/424.png",
+        "flag": "https://media.api-sports.io/flags/cg.svg",
+        "season": 2022,
+        "round": "Regular Season - 4"
+      },
+      "teams": {
+        "home": {
+          "id": 15285,
+          "name": "Blessing",
+          "logo": "https://media.api-sports.io/football/teams/15285.png",
+          "winner": false
+        },
+        "away": {
+          "id": 6435,
+          "name": "TP Mazembe",
+          "logo": "https://media.api-sports.io/football/teams/6435.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 60,
+            "extra": null
+          },
+          "team": {
+            "id": 6435,
+            "name": "TP Mazembe",
+            "logo": "https://media.api-sports.io/football/teams/6435.png"
+          },
+          "player": {
+            "id": 144679,
+            "name": "E. Luzolo"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 966913,
+        "referee": "A. Kourgheli",
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": null,
+          "name": "Yud-Alef Stadium",
+          "city": "Ashdod"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 66
+        }
+      },
+      "league": {
+        "id": 14,
+        "name": "UEFA Youth League",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/14.png",
+        "flag": null,
+        "season": 2022,
+        "round": "2nd Round"
+      },
+      "teams": {
+        "home": {
+          "id": 20228,
+          "name": "Ashdod U19",
+          "logo": "https://media.api-sports.io/football/teams/20228.png",
+          "winner": false
+        },
+        "away": {
+          "id": 7912,
+          "name": "MTK U19",
+          "logo": "https://media.api-sports.io/football/teams/7912.png",
+          "winner": true
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 26,
+            "extra": null
+          },
+          "team": {
+            "id": 7912,
+            "name": "MTK U19",
+            "logo": "https://media.api-sports.io/football/teams/7912.png"
+          },
+          "player": {
+            "id": null,
+            "name": "B. Barkoczi"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 42,
+            "extra": null
+          },
+          "team": {
+            "id": 20228,
+            "name": "Ashdod U19",
+            "logo": "https://media.api-sports.io/football/teams/20228.png"
+          },
+          "player": {
+            "id": null,
+            "name": "N. Mucha"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 59,
+            "extra": null
+          },
+          "team": {
+            "id": 7912,
+            "name": "MTK U19",
+            "logo": "https://media.api-sports.io/football/teams/7912.png"
+          },
+          "player": {
+            "id": null,
+            "name": "B. Barkoczi"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 966916,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T13:30:00+00:00",
+        "timestamp": 1666791000,
+        "periods": {
+          "first": 1666791000,
+          "second": 1666794600
+        },
+        "venue": {
+          "id": 1573,
+          "name": "Stade de Ben Guerdane",
+          "city": "Ben Gardane"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 90
+        }
+      },
+      "league": {
+        "id": 202,
+        "name": "Ligue 1",
+        "country": "Tunisia",
+        "logo": "https://media.api-sports.io/football/leagues/202.png",
+        "flag": "https://media.api-sports.io/flags/tn.svg",
+        "season": 2022,
+        "round": "Regular Season - 2"
+      },
+      "teams": {
+        "home": {
+          "id": 986,
+          "name": "US Ben Guerdane",
+          "logo": "https://media.api-sports.io/football/teams/986.png",
+          "winner": true
+        },
+        "away": {
+          "id": 984,
+          "name": "ES Metlaoui",
+          "logo": "https://media.api-sports.io/football/teams/984.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 2,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 35,
+            "extra": null
+          },
+          "team": {
+            "id": 986,
+            "name": "US Ben Guerdane",
+            "logo": "https://media.api-sports.io/football/teams/986.png"
+          },
+          "player": {
+            "id": 49577,
+            "name": "R. Kamergi"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 90,
+            "extra": null
+          },
+          "team": {
+            "id": 986,
+            "name": "US Ben Guerdane",
+            "logo": "https://media.api-sports.io/football/teams/986.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 967199,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T14:00:00+00:00",
+        "timestamp": 1666792800,
+        "periods": {
+          "first": 1666792800,
+          "second": 1666796400
+        },
+        "venue": {
+          "id": 2520,
+          "name": "Stadion Braća Velašević",
+          "city": "Danilovgrad"
+        },
+        "status": {
+          "long": "Second Half",
+          "short": "2H",
+          "elapsed": 66
+        }
+      },
+      "league": {
+        "id": 723,
+        "name": "Cup",
+        "country": "Montenegro",
+        "logo": "https://media.api-sports.io/football/leagues/723.png",
+        "flag": "https://media.api-sports.io/flags/me.svg",
+        "season": 2022,
+        "round": "Quarter-finals"
+      },
+      "teams": {
+        "home": {
+          "id": 3738,
+          "name": "Iskra",
+          "logo": "https://media.api-sports.io/football/teams/3738.png",
+          "winner": null
+        },
+        "away": {
+          "id": 3740,
+          "name": "Mornar",
+          "logo": "https://media.api-sports.io/football/teams/3740.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 33,
+            "extra": null
+          },
+          "team": {
+            "id": 3740,
+            "name": "Mornar",
+            "logo": "https://media.api-sports.io/football/teams/3740.png"
+          },
+          "player": {
+            "id": 66796,
+            "name": "A. Vujacic"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 64,
+            "extra": null
+          },
+          "team": {
+            "id": 3738,
+            "name": "Iskra",
+            "logo": "https://media.api-sports.io/football/teams/3738.png"
+          },
+          "player": {
+            "id": null,
+            "name": null
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 866394,
+        "referee": "Fran Jović, Croatia",
+        "timezone": "UTC",
+        "date": "2022-10-26T14:30:00+00:00",
+        "timestamp": 1666794600,
+        "periods": {
+          "first": 1666794600,
+          "second": null
+        },
+        "venue": {
+          "id": 413,
+          "name": "Stadion Poljud",
+          "city": "Split"
+        },
+        "status": {
+          "long": "Halftime",
+          "short": "HT",
+          "elapsed": 45
+        }
+      },
+      "league": {
+        "id": 210,
+        "name": "HNL",
+        "country": "Croatia",
+        "logo": "https://media.api-sports.io/football/leagues/210.png",
+        "flag": "https://media.api-sports.io/flags/hr.svg",
+        "season": 2022,
+        "round": "Regular Season - 4"
+      },
+      "teams": {
+        "home": {
+          "id": 608,
+          "name": "HNK Hajduk Split",
+          "logo": "https://media.api-sports.io/football/teams/608.png",
+          "winner": null
+        },
+        "away": {
+          "id": 1068,
+          "name": "HNK Gorica",
+          "logo": "https://media.api-sports.io/football/teams/1068.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 2,
+            "extra": null
+          },
+          "team": {
+            "id": 608,
+            "name": "HNK Hajduk Split",
+            "logo": "https://media.api-sports.io/football/teams/608.png"
+          },
+          "player": {
+            "id": 611,
+            "name": "M. Livaja"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 9,
+            "extra": null
+          },
+          "team": {
+            "id": 1068,
+            "name": "HNK Gorica",
+            "logo": "https://media.api-sports.io/football/teams/1068.png"
+          },
+          "player": {
+            "id": 129707,
+            "name": "T. Francois"
+          },
+          "assist": {
+            "id": 14295,
+            "name": "J. Mitrovic"
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 12,
+            "extra": null
+          },
+          "team": {
+            "id": 608,
+            "name": "HNK Hajduk Split",
+            "logo": "https://media.api-sports.io/football/teams/608.png"
+          },
+          "player": {
+            "id": 611,
+            "name": "M. Livaja"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 17,
+            "extra": null
+          },
+          "team": {
+            "id": 608,
+            "name": "HNK Hajduk Split",
+            "logo": "https://media.api-sports.io/football/teams/608.png"
+          },
+          "player": {
+            "id": 14351,
+            "name": "E. Sahiti"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 23,
+            "extra": null
+          },
+          "team": {
+            "id": 1068,
+            "name": "HNK Gorica",
+            "logo": "https://media.api-sports.io/football/teams/1068.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Korca"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 43,
+            "extra": null
+          },
+          "team": {
+            "id": 608,
+            "name": "HNK Hajduk Split",
+            "logo": "https://media.api-sports.io/football/teams/608.png"
+          },
+          "player": {
+            "id": 41280,
+            "name": "J. Vukovic"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 968092,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-10-26T14:35:00+00:00",
+        "timestamp": 1666794900,
+        "periods": {
+          "first": 1666794900,
+          "second": null
+        },
+        "venue": {
+          "id": 2345,
+          "name": "Mohammed Al-Hammad Stadium",
+          "city": "Kuwait City"
+        },
+        "status": {
+          "long": "Halftime",
+          "short": "HT",
+          "elapsed": 45
+        }
+      },
+      "league": {
+        "id": 820,
+        "name": "Crown Prince Cup",
+        "country": "Kuwait",
+        "logo": "https://media.api-sports.io/football/leagues/820.png",
+        "flag": "https://media.api-sports.io/flags/kw.svg",
+        "season": 2022,
+        "round": "Quarter-finals"
+      },
+      "teams": {
+        "home": {
+          "id": 3538,
+          "name": "Al Salmiyah",
+          "logo": "https://media.api-sports.io/football/teams/3538.png",
+          "winner": true
+        },
+        "away": {
+          "id": 3544,
+          "name": "Burgan",
+          "logo": "https://media.api-sports.io/football/teams/3544.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 4,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 4,
+          "away": 0
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 3,
+            "extra": null
+          },
+          "team": {
+            "id": 3538,
+            "name": "Al Salmiyah",
+            "logo": "https://media.api-sports.io/football/teams/3538.png"
+          },
+          "player": {
+            "id": null,
+            "name": "J. Saeed"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 4,
+            "extra": null
+          },
+          "team": {
+            "id": 3538,
+            "name": "Al Salmiyah",
+            "logo": "https://media.api-sports.io/football/teams/3538.png"
+          },
+          "player": {
+            "id": null,
+            "name": "M. Al Finini"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 18,
+            "extra": null
+          },
+          "team": {
+            "id": 3538,
+            "name": "Al Salmiyah",
+            "logo": "https://media.api-sports.io/football/teams/3538.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Rostom"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 24,
+            "extra": null
+          },
+          "team": {
+            "id": 3538,
+            "name": "Al Salmiyah",
+            "logo": "https://media.api-sports.io/football/teams/3538.png"
+          },
+          "player": {
+            "id": null,
+            "name": "A. Rostom"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        }
+      ]
+    }
+  ]
+}
