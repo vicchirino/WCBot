@@ -2,12 +2,12 @@
   "name": "world-cup-bot",
   "version": "1.0.0",
   "description": "World cup 2022 notifications bot",
-  "main": "index.tsx",
+  "main": "src/index.tsx",
   "author": "Victor Chirino <vicchirino@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "ts-node index.tsx",
+    "start": "ts-node src/index.tsx",
     "start:server": "ts-node src/server.ts",
     "prettier:all": "prettier \"./\" --check",
     "prettier:all:fix": "prettier \"./\" --write"

@@ -10,6 +10,20 @@ const instance = axios.create({
   headers: { "x-apisports-key": API_FOOTBALL_KEY },
 })
 
+export function getRequest<T>(endpoint: string, parameters: any): Promise<T> {
+  return instance
+    .get(`${API_FOOTBALL_URL}${endpoint}`, { params: parameters })
+    .then(res => {
+      if (res.status !== 200) {
+        throw new Error(res.statusText)
+      }
+      return res.data as Promise<T>
+    })
+    .catch(err => {
+      throw new Error(err)
+    })
+}
+
 export function postRequest<T>(endpoint: string, parameters: any): Promise<T> {
   return instance
     .post(`${API_FOOTBALL_URL}${endpoint}`, null, { params: parameters })

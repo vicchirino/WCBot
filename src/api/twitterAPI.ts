@@ -1,4 +1,5 @@
 import { TwitterApi } from "twitter-api-v2"
+require("dotenv").config()
 
 const twitterClient = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY || "",
@@ -7,9 +8,9 @@ const twitterClient = new TwitterApi({
   accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || "",
 })
 
-export async function postTweet() {
-  const response = await twitterClient.v2
-    .tweet("Hello world! 2")
+export async function postTweet(text: string) {
+  return twitterClient.v2
+    .tweet(text)
     .then(res => {
       console.log("RESPONSE: ", res)
     })

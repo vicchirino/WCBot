@@ -1,0 +1,117 @@
+{
+  "get": "leagues",
+  "parameters": {
+    "id": "1"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "league": {
+        "id": 1,
+        "name": "World Cup",
+        "type": "Cup",
+        "logo": "https://media.api-sports.io/football/leagues/1.png"
+      },
+      "country": {
+        "name": "World",
+        "code": null,
+        "flag": null
+      },
+      "seasons": [
+        {
+          "year": 2010,
+          "start": "2010-06-11",
+          "end": "2010-07-11",
+          "current": false,
+          "coverage": {
+            "fixtures": {
+              "events": true,
+              "lineups": true,
+              "statistics_fixtures": false,
+              "statistics_players": false
+            },
+            "standings": false,
+            "players": true,
+            "top_scorers": true,
+            "top_assists": true,
+            "top_cards": true,
+            "injuries": false,
+            "predictions": true,
+            "odds": false
+          }
+        },
+        {
+          "year": 2014,
+          "start": "2014-06-12",
+          "end": "2014-07-13",
+          "current": false,
+          "coverage": {
+            "fixtures": {
+              "events": true,
+              "lineups": true,
+              "statistics_fixtures": false,
+              "statistics_players": false
+            },
+            "standings": false,
+            "players": true,
+            "top_scorers": true,
+            "top_assists": true,
+            "top_cards": true,
+            "injuries": false,
+            "predictions": true,
+            "odds": false
+          }
+        },
+        {
+          "year": 2018,
+          "start": "2018-06-14",
+          "end": "2018-07-15",
+          "current": false,
+          "coverage": {
+            "fixtures": {
+              "events": true,
+              "lineups": true,
+              "statistics_fixtures": true,
+              "statistics_players": true
+            },
+            "standings": true,
+            "players": true,
+            "top_scorers": true,
+            "top_assists": true,
+            "top_cards": true,
+            "injuries": false,
+            "predictions": true,
+            "odds": false
+          }
+        },
+        {
+          "year": 2022,
+          "start": "2022-11-20",
+          "end": "2022-12-02",
+          "current": true,
+          "coverage": {
+            "fixtures": {
+              "events": false,
+              "lineups": false,
+              "statistics_fixtures": false,
+              "statistics_players": false
+            },
+            "standings": true,
+            "players": false,
+            "top_scorers": false,
+            "top_assists": false,
+            "top_cards": false,
+            "injuries": false,
+            "predictions": true,
+            "odds": false
+          }
+        }
+      ]
+    }
+  ]
+}
