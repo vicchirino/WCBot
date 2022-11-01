@@ -1,54 +1,54 @@
 export type Fixture = {
-  id: Number
-  referee: String | null
-  timezone: String
-  date: String
-  timestamp: Number
+  id: number
+  referee: string | null
+  timezone: string
+  date: string
+  timestamp: number
   status: {
-    long: String | null
-    short: String | null
-    elapsed: Number | null
+    long: string | null
+    short: string | null
+    elapsed: number | null
   }
 }
 
 type League = {
-  id: Number
-  name: String
-  country: String
-  logo: String
-  flag: String | null
-  season: Number | null
-  round: String | null
+  id: number
+  name: string
+  country: string
+  logo: string
+  flag: string | null
+  season: number | null
+  round: string | null
 }
 
 type Team = {
-  id: Number
-  name: String
-  logo: String
+  id: number
+  name: string
+  logo: string
 }
 
 type Score = {
   halftime: {
-    home: Number | null
-    away: Number | null
+    home: number | null
+    away: number | null
   }
   fulltime: {
-    home: Number | null
-    away: Number | null
+    home: number | null
+    away: number | null
   }
   extratime: {
-    home: Number | null
-    away: Number | null
+    home: number | null
+    away: number | null
   }
   penalty: {
-    home: Number | null
-    away: Number | null
+    home: number | null
+    away: number | null
   }
 }
 
 type Player = {
-  id: Number
-  name: String
+  id: number
+  name: string
 }
 
 type Coverage = {
@@ -69,9 +69,9 @@ type Coverage = {
 }
 
 type Season = {
-  year: Number
-  start: String
-  end: String
+  year: number
+  start: string
+  end: string
   current: Boolean
   coverage: Coverage
 }
@@ -85,14 +85,14 @@ export enum MatchEventType {
 
 export type MatchEvent = {
   time: {
-    elapsed: Number
-    // extra: Number | null;
+    elapsed: number
+    // extra: number | null;
   }
   team: Team
   player: Player
   assist: {
-    id: Number | null
-    name: String | null
+    id: number | null
+    name: string | null
   }
   type: "Goal" | "Card" | "Subst" | "Var"
   detail:
@@ -105,13 +105,13 @@ export type MatchEvent = {
     | "Goal cancelled"
     | "Penalty confirmed"
     | "Second Yellow card"
-  // comments: String | null;
+  // comments: string | null;
 }
 
 type Country = {
-  name: String
-  code: String
-  flag: String
+  name: string
+  code: string
+  flag: string
 }
 
 export type FixtureItem = {
@@ -122,8 +122,8 @@ export type FixtureItem = {
     away: Team
   }
   goals: {
-    home: Number | null
-    away: Number | null
+    home: number | null
+    away: number | null
   }
   score: Score
   events?: MatchEvent[]
@@ -137,17 +137,21 @@ type LeagueItem = {
 
 type DefaultResponse = {
   errors: {
-    token: String | null
+    token: string | null
   } | null
-  results: Number
+  results: number
   paging: {
-    current: Number
-    total: Number
+    current: number
+    total: number
   }
 }
 
 export type FixtureResponse = {
   response: FixtureItem[]
+} & DefaultResponse
+
+export type EventResponse = {
+  response: MatchEvent[]
 } & DefaultResponse
 
 export type LeagueResponse = {
