@@ -14,11 +14,3 @@ export async function getEvents(parameters: {
   const result = await getRequest<EventResponse>("fixtures/events", parameters)
   return result.response
 }
-
-// export async function getLiveFixture(parameters: {
-//   live: "all"
-//   league: number
-// }): Promise<FixtureResponse["response"]> {
-//   const result = await getRequest<FixtureResponse>("fixtures", parameters)
-//   return result.response
-// }

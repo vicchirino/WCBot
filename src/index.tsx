@@ -3,47 +3,31 @@ import { sleep } from "./utils"
 import { ChampionsLeagueID } from "./api/leaguesAPI"
 import {
   getFixturesFromLeague,
-  getLiveFixture,
-  isFixtureInTheFuture,
-  isFixtureLive,
   isFixtureNearToStart,
   compareFixtureDates,
-  postFixtureEvents,
   postReadyToStartFixtures,
+  postEventsOfFixture,
+  isFixtureInThePast,
 } from "./domain/fixture"
-import { getEvents } from "./api/fixturesAPI"
-
-async function postEventsOfFixture(fixtureItem: FixtureItem) {
-  let liveFixture = fixtureItem
-  let eventsPosted: MatchEvent[] = []
-  while (isFixtureLive(liveFixture)) {
-    let liveFixtureUpdated = await getLiveFixture(liveFixture.fixture.id)
-    liveFixture = liveFixtureUpdated || liveFixture
-    let events = liveFixtureUpdated?.events || []
-    console.log(`#### Fixture ${liveFixture.fixture.id} events`, events.length)
-    console.log("----------------------------------\n")
-    events = events.filter(matchEvent => !eventsPosted.includes(matchEvent))
-    eventsPosted = [...eventsPosted, ...events]
-    console.log(
-      `#### Fixture ${liveFixture.fixture.id} events posted`,
-      eventsPosted.length
-    )
-    console.log("----------------------------------\n")
-    postFixtureEvents(liveFixture, events)
-  }
-}
+import liveFixturesMock from "./utils/mocks/fixtures_response.json"
 
 async function main() {
-  const fixtureItems = await getFixturesFromLeague(ChampionsLeagueID, "2022")
+  let fixtureItems = await getFixturesFromLeague(ChampionsLeagueID, "2022")
+  fixtureItems.sort((itemA, itemB) => compareFixtureDates(itemA, itemB))
   console.log("#### Fixtures from League", fixtureItems.length)
   console.log("----------------------------------\n")
   let fixturesLive: FixtureItem[] = []
   let fixturesLivePosted: FixtureItem[] = []
   let fixturesNearToStart: FixtureItem[] = []
   let fixturesNearToStartPosted: FixtureItem[] = []
+  let nearestFixture: FixtureItem | undefined = fixtureItems && fixtureItems[0]
 
   while (true) {
-    fixtureItems.sort((itemA, itemB) => compareFixtureDates(itemA, itemB))
+    if (isFixtureInThePast(nearestFixture)) {
+      fixtureItems = await getFixturesFromLeague(ChampionsLeagueID, "2022")
+      fixtureItems.sort((itemA, itemB) => compareFixtureDates(itemA, itemB))
+      nearestFixture = fixtureItems && fixtureItems[0]
+    }
     console.log("#### Fixtures from League sorted", fixtureItems.length)
     console.log("----------------------------------\n")
     console.log(
@@ -53,7 +37,8 @@ async function main() {
     console.log("----------------------------------\n")
     console.log("#### Fixtures live posted", fixturesLivePosted.length)
     console.log("----------------------------------\n")
-    const minutes = 5 * 60 * 1000 // 45 minutes
+
+    const minutes = 15 * 60 * 1000
     fixturesNearToStart = fixtureItems.filter(
       fixtureItem =>
         isFixtureNearToStart(fixtureItem, minutes) &&
@@ -77,23 +62,24 @@ async function main() {
       postReadyToStartFixtures(fixturesNearToStart)
     }
 
-    fixturesLive = fixtureItems.filter(
-      fixtureItem =>
-        isFixtureLive(fixtureItem) && !fixturesLivePosted.includes(fixtureItem)
-    )
+    // fixturesLive = fixtureItems.filter(
+    //   fixtureItem =>
+    //     isFixtureLive(fixtureItem) && !fixturesLivePosted.includes(fixtureItem)
+    // )
+    fixturesLive = liveFixturesMock.response as FixtureItem[]
     console.log("#### Fixtures Live", fixturesLive.length)
     console.log("----------------------------------\n")
+
     // Si hay partidos en vivo posteo los events
     if (fixturesLive.length > 0) {
       fixturesLivePosted = [...fixturesLivePosted, ...fixturesLive]
       console.log("#### Fixtures Live Posted", fixturesLivePosted.length)
       console.log("----------------------------------\n")
-      fixturesLive.forEach(fixtureItem => {
-        postEventsOfFixture(fixtureItem)
-      })
+      for (const key in fixturesLive) {
+        postEventsOfFixture(fixturesLive[key])
+      }
     }
-
-    await sleep(10000)
+    await sleep(100000)
   }
 }
 

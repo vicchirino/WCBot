@@ -8,6 +8,7 @@
   "private": false,
   "scripts": {
     "start": "ts-node src/index.tsx",
+    "test": "jest",
     "start:server": "ts-node src/server.ts",
     "prettier:all": "prettier \"./\" --check",
     "prettier:all:fix": "prettier \"./\" --write"
@@ -19,6 +20,7 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.1",
     "@types/node": "^18.11.6",
     "@types/node-fetch": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
@@ -27,8 +29,10 @@
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.2.2",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1"
   }
 }

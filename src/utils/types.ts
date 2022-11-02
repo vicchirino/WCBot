@@ -83,6 +83,10 @@ export enum MatchEventType {
   Var,
 }
 
+export type MatchEventWithId = {
+  id: number
+} & MatchEvent
+
 export type MatchEvent = {
   time: {
     elapsed: number

@@ -1,7 +1,9 @@
 import { getFixtures } from "../api/fixturesAPI"
 import { ChampionsLeagueID } from "../api/leaguesAPI"
 import { postTweets } from "../api/twitterAPI"
-import { FixtureItem, MatchEvent } from "../utils/types"
+import { FixtureItem, MatchEvent, MatchEventWithId } from "../utils/types"
+import fixtures from "../utils/mocks/champions_league_response.json"
+import liveFixturesMock from "../utils/mocks/fixtures_response.json"
 
 // Fixtures API functions
 
@@ -14,18 +16,19 @@ export async function getFixturesFromLeague(
   league: number,
   season: string
 ): Promise<FixtureItem[]> {
-  const fixtureItems = await getFixtures({
-    league: league,
-    season: season,
-  })
-  return fixtureItems
+  // const fixtureItems = await getFixtures({
+  //   league: league,
+  //   season: season,
+  // })
+  return fixtures.response
 }
 
 export async function getLiveFixture(
   fixtureID: number
 ): Promise<FixtureItem | undefined> {
   const liveFixtures = await getLiveFixtures(ChampionsLeagueID)
-  return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
+  // return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
+  return liveFixturesMock.response[8] as FixtureItem
 }
 
 // Twitter API functions
@@ -39,11 +42,44 @@ export function postReadyToStartFixtures(fixtures: FixtureItem[]) {
   )
 }
 
-export function postFixtureEvents(
+export async function postEventsOfFixture(fixtureItem: FixtureItem) {
+  let liveFixture = fixtureItem
+  let eventsPosted: MatchEventWithId[] = []
+  while (isFixtureLive(liveFixture)) {
+    let liveFixtureUpdated = await getLiveFixture(liveFixture.fixture.id)
+    liveFixture = liveFixtureUpdated || liveFixture
+    let events = (liveFixtureUpdated?.events || []).sort(
+      (eventA, eventB) => eventA.time.elapsed - eventB.time.elapsed
+    )
+
+    // Events doesn't have id, so I add it to check that the event is not posted
+    let eventsWithId: MatchEventWithId[] = events.map((matchEvent, index) => {
+      return { id: index, ...matchEvent }
+    })
+    eventsWithId = eventsWithId.filter(
+      matchEvent =>
+        !eventsPosted.find(eventPosted => eventPosted.id === matchEvent.id)
+    )
+    eventsPosted = eventsPosted.concat(eventsWithId)
+    console.log(
+      `#### Fixture ${liveFixture.fixture.id} new events`,
+      eventsWithId.length
+    )
+    console.log("----------------------------------\n")
+    console.log(
+      `#### Fixture ${liveFixture.fixture.id} events posted`,
+      eventsPosted.length
+    )
+    console.log("----------------------------------\n")
+    await postFixtureEvents(liveFixture, eventsWithId)
+  }
+}
+
+export async function postFixtureEvents(
   fixtureItem: FixtureItem,
   events: MatchEvent[]
 ) {
-  postTweets(
+  await postTweets(
     events.map(event => getTweetTextForFixtureEvent(fixtureItem, event))
   )
 }
@@ -51,35 +87,44 @@ export function postFixtureEvents(
 // Fixture domain functions
 
 export function isFixtureLive(item: FixtureItem): boolean {
-  // console.log("isFixtureLive", item)
   return (
     item.fixture.status.short === "LIVE" ||
     item.fixture.status.short === "1H" ||
     item.fixture.status.short === "2H" ||
     item.fixture.status.short === "HT" ||
     item.fixture.status.short === "ET" ||
-    item.fixture.status.short === "P" ||
-    isFixtureHappening(item)
+    item.fixture.status.short === "P"
   )
 }
 
-// TODO: check this out
 export function isFixtureNearToStart(
   item: FixtureItem,
   minutes: number
 ): boolean {
-  return new Date(new Date(item.fixture.date).getTime() - minutes) >= new Date()
+  const fixtureDate = new Date(item.fixture.date)
+  const now = new Date()
+  if (fixtureDate < now) {
+    return false
+  }
+  now.setMinutes(now.getMinutes() + minutes)
+  return now > fixtureDate
 }
 
 export function compareFixtureDates(
   fixtureItemA: FixtureItem,
   fixtureItemB: FixtureItem
 ): number {
-  return +fixtureItemA.fixture.date - +fixtureItemB.fixture.date
+  return (
+    +new Date(fixtureItemA.fixture.date) - +new Date(fixtureItemB.fixture.date)
+  )
 }
 
 export function isFixtureInTheFuture(item: FixtureItem): boolean {
   return new Date(item.fixture.date) > new Date()
+}
+
+export function isFixtureInThePast(item: FixtureItem): boolean {
+  return new Date(item.fixture.date) < new Date()
 }
 
 // Helper functions
@@ -120,12 +165,4 @@ function getTweetTextForFixtureEvent(
     }
   }
   return ""
-}
-
-// TODO: check this out
-function isFixtureHappening(item: FixtureItem) {
-  const fiveMinutes = 5 * 60 * 1000
-  return (
-    new Date(new Date(item.fixture.date).getTime() - fiveMinutes) <= new Date()
-  )
 }
