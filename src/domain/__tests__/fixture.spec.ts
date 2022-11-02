@@ -108,13 +108,6 @@ describe("compareFixtureDates", () => {
   })
 })
 
-// item.fixture.status.short === "LIVE" ||
-// item.fixture.status.short === "1H" ||
-// item.fixture.status.short === "2H" ||
-// item.fixture.status.short === "HT" ||
-// item.fixture.status.short === "ET" ||
-// item.fixture.status.short === "P"
-
 describe("isFixtureLive", () => {
   let fixtureItem: FixtureItem
   const liveStatuses = ["LIVE", "1H", "2H", "HT", "ET", "P"]

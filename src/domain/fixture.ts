@@ -27,8 +27,8 @@ export async function getLiveFixture(
   fixtureID: number
 ): Promise<FixtureItem | undefined> {
   const liveFixtures = await getLiveFixtures(ChampionsLeagueID)
-  // return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
-  return liveFixturesMock.response[8] as FixtureItem
+  return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
+  // return liveFixturesMock.response[8] as FixtureItem
 }
 
 // Twitter API functions

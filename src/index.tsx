@@ -8,6 +8,7 @@ import {
   postReadyToStartFixtures,
   postEventsOfFixture,
   isFixtureInThePast,
+  isFixtureLive,
 } from "./domain/fixture"
 import liveFixturesMock from "./utils/mocks/fixtures_response.json"
 
@@ -62,11 +63,11 @@ async function main() {
       postReadyToStartFixtures(fixturesNearToStart)
     }
 
-    // fixturesLive = fixtureItems.filter(
-    //   fixtureItem =>
-    //     isFixtureLive(fixtureItem) && !fixturesLivePosted.includes(fixtureItem)
-    // )
-    fixturesLive = liveFixturesMock.response as FixtureItem[]
+    fixturesLive = fixtureItems.filter(
+      fixtureItem =>
+        isFixtureLive(fixtureItem) && !fixturesLivePosted.includes(fixtureItem)
+    )
+    // fixturesLive = liveFixturesMock.response as FixtureItem[]
     console.log("#### Fixtures Live", fixturesLive.length)
     console.log("----------------------------------\n")
 
