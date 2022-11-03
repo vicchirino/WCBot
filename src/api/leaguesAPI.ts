@@ -3,6 +3,7 @@ import { getRequest } from "./utils"
 
 export const WorldCupID = 1
 export const ChampionsLeagueID = 2
+export const EuropaLeagueID = 3
 
 export async function getLeague(leagueID: number) {
   const result = await getRequest<LeagueResponse>("leagues", { id: leagueID })

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { NetworkCounter } from "../utils"
 
 require("dotenv").config()
 
@@ -11,6 +12,7 @@ const instance = axios.create({
 })
 
 export function getRequest<T>(endpoint: string, parameters: any): Promise<T> {
+  NetworkCounter.getInstance().addCall()
   return instance
     .get(`${API_FOOTBALL_URL}${endpoint}`, { params: parameters })
     .then(res => {
@@ -25,6 +27,7 @@ export function getRequest<T>(endpoint: string, parameters: any): Promise<T> {
 }
 
 export function postRequest<T>(endpoint: string, parameters: any): Promise<T> {
+  NetworkCounter.getInstance().addCall()
   return instance
     .post(`${API_FOOTBALL_URL}${endpoint}`, null, { params: parameters })
     .then(res => {

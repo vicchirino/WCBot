@@ -26,6 +26,6 @@ export async function postTweets(tweets: string[]) {
     console.log(tweet)
     // postTweet(tweet)
     console.log("-----")
-    await sleep(5000)
+    await sleep(15 * 1000)
   }
 }

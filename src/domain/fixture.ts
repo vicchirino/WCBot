@@ -1,9 +1,8 @@
 import { getFixtures } from "../api/fixturesAPI"
-import { ChampionsLeagueID } from "../api/leaguesAPI"
+import { ChampionsLeagueID, EuropaLeagueID } from "../api/leaguesAPI"
 import { postTweets } from "../api/twitterAPI"
 import { FixtureItem, MatchEvent, MatchEventWithId } from "../utils/types"
-import fixtures from "../utils/mocks/champions_league_response.json"
-import liveFixturesMock from "../utils/mocks/fixtures_response.json"
+import { sleep } from "../utils"
 
 // Fixtures API functions
 
@@ -16,19 +15,19 @@ export async function getFixturesFromLeague(
   league: number,
   season: string
 ): Promise<FixtureItem[]> {
-  // const fixtureItems = await getFixtures({
-  //   league: league,
-  //   season: season,
-  // })
-  return fixtures.response
+  const fixtureItems = await getFixtures({
+    league: league,
+    season: season,
+  })
+  return fixtureItems
 }
 
 export async function getLiveFixture(
-  fixtureID: number
+  fixtureID: number,
+  leagueID: number
 ): Promise<FixtureItem | undefined> {
-  const liveFixtures = await getLiveFixtures(ChampionsLeagueID)
+  const liveFixtures = await getLiveFixtures(leagueID)
   return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
-  // return liveFixturesMock.response[8] as FixtureItem
 }
 
 // Twitter API functions
@@ -46,7 +45,10 @@ export async function postEventsOfFixture(fixtureItem: FixtureItem) {
   let liveFixture = fixtureItem
   let eventsPosted: MatchEventWithId[] = []
   while (isFixtureLive(liveFixture)) {
-    let liveFixtureUpdated = await getLiveFixture(liveFixture.fixture.id)
+    let liveFixtureUpdated = await getLiveFixture(
+      liveFixture.fixture.id,
+      fixtureItem.league.id
+    )
     liveFixture = liveFixtureUpdated || liveFixture
     let events = (liveFixtureUpdated?.events || []).sort(
       (eventA, eventB) => eventA.time.elapsed - eventB.time.elapsed
@@ -72,6 +74,7 @@ export async function postEventsOfFixture(fixtureItem: FixtureItem) {
     )
     console.log("----------------------------------\n")
     await postFixtureEvents(liveFixture, eventsWithId)
+    await sleep(60 * 1000)
   }
 }
 
@@ -135,33 +138,31 @@ function getTweetTextForFixtureEvent(
 ): string {
   if (event.type === "Goal") {
     if (event.detail === "Penalty") {
-      return `➡️  Penalty scored!!\n\n⚽ ${event.player.name} - ${event.team.name}\n\n⏰ ${fixtureItem.fixture.status.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
+      return `➡️  Penalty scored!!\n\n⚽ ${event.player.name} - ${event.team.name}\n\n⏰ ${event.time.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
     }
     if (event.detail === "Own Goal") {
-      return `➡️  Own Goal\n\n⚽${event.player.name} - ${event.team.name}\n\n⏰ ${fixtureItem.fixture.status.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
+      return `➡️  Own Goal\n\n⚽${event.player.name} - ${event.team.name}\n\n⏰ ${event.time.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
     }
     if (event.detail === "Normal Goal") {
       return `➡️  Goal\n\n⚽ ${event.player.name} - ${event.team.name}\n${
         event.assist.name ? `👥 ${event.assist.name}` : ""
       }\n${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${
         fixtureItem.goals.away
-      } ${fixtureItem.teams.away.name}\n⏰ ${
-        fixtureItem.fixture.status.elapsed
-      }min`
+      } ${fixtureItem.teams.away.name}\n⏰ ${event.time.elapsed}min`
     }
     if (event.detail === "Missed Penalty") {
-      return `➡️ Missed Penalty\n❌${event.player.name}\n\n⏰ ${fixtureItem.fixture.status.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
+      return `➡️ Missed Penalty\n❌${event.player.name}\n\n⏰ ${event.time.elapsed}min ${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}`
     }
   }
   if (event.type === "Card") {
     if (event.detail === "Yellow Card") {
-      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🟡 ${event.player.name} - ${event.team.name} \n⏰ ${fixtureItem.fixture.status.elapsed}min`
+      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🟡 ${event.player.name} - ${event.team.name} \n⏰ ${event.time.elapsed}min`
     }
     if (event.detail === "Second Yellow card") {
-      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🟡🟡 ${event.player.name} - ${event.team.name} \n⏰ ${fixtureItem.fixture.status.elapsed}min`
+      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🟡🟡 ${event.player.name} - ${event.team.name} \n⏰ ${event.time.elapsed}min`
     }
     if (event.detail === "Red Card") {
-      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🔴 ${event.player.name} - ${event.team.name} \n⏰ ${fixtureItem.fixture.status.elapsed}min`
+      return `${fixtureItem.teams.home.name} ${fixtureItem.goals.home} - ${fixtureItem.goals.away} ${fixtureItem.teams.away.name}\n🔴 ${event.player.name} - ${event.team.name} \n⏰ ${event.time.elapsed}min`
     }
   }
   return ""
