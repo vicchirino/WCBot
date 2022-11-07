@@ -5,14 +5,14 @@ import {
   getFixturesFromLeague,
   isFixtureNearToStart,
   compareFixtureDates,
-  postReadyToStartFixtures,
   postEventsOfFixture,
   isFixtureInThePast,
   isFixtureLive,
+  postReadyToStartFixtures,
 } from "./domain/fixture"
-import liveFixturesMock from "./utils/mocks/fixtures_response.json"
+import liveFixturesMock from "./utils/mocks/live_fixtures_response.json"
 
-const minutes = 15 * 60 * 1000
+const minutes = 15
 
 async function main() {
   let fixtureItems = await getFixturesFromLeague(EuropaLeagueID, "2022")
