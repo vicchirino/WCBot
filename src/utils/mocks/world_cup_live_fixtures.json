@@ -1,0 +1,286 @@
+{
+  "get": "fixtures",
+  "parameters": {
+    "live": "all"
+  },
+  "errors": [],
+  "results": 24,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "fixture": {
+        "id": 855734,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-11-21T16:00:00+00:00",
+        "timestamp": 1669046400,
+        "periods": {
+          "first": 1669046400,
+          "second": null
+        },
+        "venue": {
+          "id": 203023,
+          "name": "Al Thumama Stadium",
+          "city": "Doha"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 44
+        }
+      },
+      "league": {
+        "id": 1,
+        "name": "World Cup",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/1.png",
+        "flag": null,
+        "season": 2022,
+        "round": "Group Stage - 1"
+      },
+      "teams": {
+        "home": {
+          "id": 13,
+          "name": "Senegal",
+          "logo": "https://media.api-sports.io/football/teams/13.png",
+          "winner": null
+        },
+        "away": {
+          "id": 1118,
+          "name": "Netherlands",
+          "logo": "https://media.api-sports.io/football/teams/1118.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 1,
+        "away": 2
+      },
+      "score": {
+        "halftime": {
+          "home": 1,
+          "away": 2
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 13,
+            "extra": null
+          },
+          "team": {
+            "id": 13,
+            "name": "Senegal",
+            "logo": "https://media.api-sports.io/football/teams/13.png"
+          },
+          "player": {
+            "id": 76342,
+            "name": "Y. Senkevich"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 14,
+            "extra": null
+          },
+          "team": {
+            "id": 1118,
+            "name": "Netherlands",
+            "logo": "https://media.api-sports.io/football/teams/1118.png"
+          },
+          "player": {
+            "id": 76342,
+            "name": "Van Nisterloy"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 18,
+            "extra": null
+          },
+          "team": {
+            "id": 1118,
+            "name": "Netherlands",
+            "logo": "https://media.api-sports.io/football/teams/1118.png"
+          },
+          "player": {
+            "id": 76342,
+            "name": "Bergkamp"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 30,
+            "extra": null
+          },
+          "team": {
+            "id": 1118,
+            "name": "Netherlands",
+            "logo": "https://media.api-sports.io/football/teams/1118.png"
+          },
+          "player": {
+            "id": 55340,
+            "name": "Stamp"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Yellow Card",
+          "comments": null
+        }
+      ]
+    },
+    {
+      "fixture": {
+        "id": 855735,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2022-11-21T16:00:00+00:00",
+        "timestamp": 1669046400,
+        "periods": {
+          "first": 1669046400,
+          "second": null
+        },
+        "venue": {
+          "id": 4012312,
+          "name": "Khalifa International Stadium",
+          "city": "Doha"
+        },
+        "status": {
+          "long": "First Half",
+          "short": "1H",
+          "elapsed": 21
+        }
+      },
+      "league": {
+        "id": 1,
+        "name": "World Cup",
+        "country": "World",
+        "logo": "https://media.api-sports.io/football/leagues/1.png",
+        "flag": null,
+        "season": 2022,
+        "round": "Group Stage - 1"
+      },
+      "teams": {
+        "home": {
+          "id": 10,
+          "name": "England",
+          "logo": "https://media.api-sports.io/football/teams/10.png",
+          "winner": null
+        },
+        "away": {
+          "id": 22,
+          "name": "Iran",
+          "logo": "https://media.api-sports.io/football/teams/22.png",
+          "winner": null
+        }
+      },
+      "goals": {
+        "home": 0,
+        "away": 1
+      },
+      "score": {
+        "halftime": {
+          "home": 0,
+          "away": 1
+        },
+        "fulltime": {
+          "home": null,
+          "away": null
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      },
+      "events": [
+        {
+          "time": {
+            "elapsed": 13,
+            "extra": null
+          },
+          "team": {
+            "id": 13,
+            "name": "Iran",
+            "logo": "https://media.api-sports.io/football/teams/22.png"
+          },
+          "player": {
+            "id": 76342,
+            "name": "Irani Player"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Goal",
+          "detail": "Normal Goal",
+          "comments": null
+        },
+        {
+          "time": {
+            "elapsed": 20,
+            "extra": null
+          },
+          "team": {
+            "id": 13,
+            "name": "Iran",
+            "logo": "https://media.api-sports.io/football/teams/22.png"
+          },
+          "player": {
+            "id": 55340,
+            "name": "Irani Player"
+          },
+          "assist": {
+            "id": null,
+            "name": null
+          },
+          "type": "Card",
+          "detail": "Red Card",
+          "comments": null
+        }
+      ]
+    }
+  ]
+}

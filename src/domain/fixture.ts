@@ -1,5 +1,4 @@
 import { getFixtures } from "../api/fixturesAPI"
-import { ChampionsLeagueID, EuropaLeagueID } from "../api/leaguesAPI"
 import { FixtureItem, MatchEvent, MatchEventWithId } from "../utils/types"
 import { sleep } from "../utils"
 import { postTweets } from "../api/twitterAPI"
@@ -28,26 +27,71 @@ export async function getLiveFixture(
   leagueID: number
 ): Promise<FixtureItem | undefined> {
   const liveFixtures = await getLiveFixtures(leagueID)
-  return liveFixtures.find(fixture => fixture.fixture.id === fixtureID)
+  return liveFixtures.find(fixture => fixture?.fixture.id === fixtureID)
 }
 
 // Fixture domain functions
 
-export function isFixtureLive(item: FixtureItem): boolean {
+export function isFixtureFromToday(fixture: FixtureItem): boolean {
+  const today = new Date()
+  const fixtureDate = new Date(fixture.fixture.date)
   return (
-    item.fixture.status.short === "LIVE" ||
-    item.fixture.status.short === "1H" ||
-    item.fixture.status.short === "2H" ||
-    item.fixture.status.short === "HT" ||
-    item.fixture.status.short === "ET" ||
-    item.fixture.status.short === "P"
+    today.getFullYear() === fixtureDate.getFullYear() &&
+    today.getMonth() === fixtureDate.getMonth() &&
+    today.getDate() === fixtureDate.getDate()
   )
 }
 
-export function isFixtureNearToStart(
-  item: FixtureItem,
-  minutes: number
-): boolean {
+export function areFixturesToPost(fixtureItems: FixtureItem[]): boolean {
+  const now = new Date()
+  if (fixtureItems.length === 0) {
+    return false
+  }
+  const firstMatchOfTheDay = fixtureItems[0]
+  const lastMatchOfTheDay = fixtureItems[fixtureItems.length - 1]
+
+  const firstMatchOfTheDayDate = new Date(firstMatchOfTheDay.fixture.date)
+  const lastMatchOfTheDayDate = new Date(lastMatchOfTheDay.fixture.date)
+
+  /**
+   * If now is between the first and last match of the day, there are live fixtures.
+   * first: firstMatchOfTheDayDate - 20 minutes
+   * last: lastMatchOfTheDayDate + 120 minutes
+   */
+
+  const firstMatchDateWithMargin = new Date(
+    firstMatchOfTheDayDate.getTime() - 20 * 60 * 1000
+  )
+  const lastMatchDateWithMargin = new Date(
+    lastMatchOfTheDayDate.getTime() + 120 * 60 * 1000
+  )
+
+  return now > firstMatchDateWithMargin && now < lastMatchDateWithMargin
+}
+
+export function isFixtureHappeningNow(fixture: FixtureItem): boolean {
+  const now = new Date()
+  const minutes = 90 * 60 * 1000
+  const fixtureDate = new Date(fixture.fixture.date)
+  const fixtureEstimatedEndDate = new Date(fixtureDate.getTime() + minutes)
+  return now > fixtureDate && now < fixtureEstimatedEndDate
+}
+
+export function isFixtureLive(item: FixtureItem): boolean {
+  return (
+    item.fixture.status?.short === "LIVE" ||
+    item.fixture.status?.short === "1H" ||
+    item.fixture.status?.short === "2H" ||
+    item.fixture.status?.short === "HT" ||
+    item.fixture.status?.short === "ET" ||
+    item.fixture.status?.short === "P" ||
+    isFixtureHappeningNow(item)
+  )
+}
+
+export function isFixtureNearToStart(item: FixtureItem): boolean {
+  // 20 minutes before the match
+  const minutes = 20
   const fixtureDate = new Date(item.fixture.date)
   const now = new Date()
   if (fixtureDate < now) {
@@ -80,6 +124,9 @@ export async function postEventsOfFixture(fixtureItem: FixtureItem) {
   let liveFixture = fixtureItem
   let eventsPosted: MatchEventWithId[] = []
   while (isFixtureLive(liveFixture)) {
+    console.log(
+      `-------------------------- Fixture live ${fixtureItem.fixture.id} --------------------------\n`
+    )
     let liveFixtureUpdated = await getLiveFixture(
       liveFixture.fixture.id,
       fixtureItem.league.id
@@ -98,19 +145,20 @@ export async function postEventsOfFixture(fixtureItem: FixtureItem) {
         !eventsPosted.find(eventPosted => eventPosted.id === matchEvent.id)
     )
     eventsPosted = eventsPosted.concat(eventsWithId)
-    console.log(
-      `#### Fixture ${liveFixture.fixture.id} new events`,
-      eventsWithId.length
-    )
-    console.log("----------------------------------\n")
-    console.log(
-      `#### Fixture ${liveFixture.fixture.id} events posted`,
-      eventsPosted.length
-    )
-    console.log("----------------------------------\n")
-    await postFixtureEvents(liveFixture, eventsWithId)
+    if (eventsWithId.length > 0) {
+      console.log(
+        `-------------------------- Post events of fixture ${fixtureItem.fixture.id} --------------------------\n`
+      )
+      console.log(`--- Fixture events: ${eventsWithId.length}.\n`)
+      await postFixtureEvents(liveFixture, eventsWithId)
+    } else {
+      console.log(
+        `-------------------------- No new event for this fixture ${fixtureItem.fixture.id} --------------------------\n`
+      )
+    }
     await sleep(60 * 1000)
   }
+  console.log("End no more live")
 }
 
 export function postReadyToStartFixtures(fixtures: FixtureItem[]) {

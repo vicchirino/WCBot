@@ -10,9 +10,12 @@ import {
   getFixturesFromLeague,
   postFixtureEvents,
   postReadyToStartFixtures,
+  isFixtureFromToday,
+  postEventsOfFixture,
 } from "../fixture"
 import liveFixturesMock from "../../utils/mocks/live_fixtures_response.json"
 import worldCupFixturesMock from "../../utils/mocks/world_cup_fixtures.json"
+import worldCupLiveFixturesMock from "../../utils/mocks/world_cup_live_fixtures.json"
 import { getFixtures } from "../../api/fixturesAPI"
 import { postTweets } from "../../api/twitterAPI"
 import * as helpers from "../helpers"
@@ -134,6 +137,7 @@ describe("domain/fixture", () => {
 
     describe("isFixtureLive", () => {
       let fixtureItem: FixtureItem
+      const now = new Date()
       const liveStatuses = ["LIVE", "1H", "2H", "HT", "ET", "P"]
 
       liveStatuses.forEach(status => {
@@ -144,6 +148,26 @@ describe("domain/fixture", () => {
           expect(isFixtureLive(fixtureItem)).toBe(true)
         })
       })
+
+      it("return true if the match is currently live and the status is not present", () => {
+        // One minute in milliseconds
+        const oneMinute = 1 * 1000 * 60
+        const fixtureDate = new Date(now.getTime() - oneMinute)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureLive(fixtureItem)).toBe(true)
+      })
+
+      it("return false if the match is not live and status is not present", () => {
+        // One minute in milliseconds
+        const oneMinute = 1 * 1000 * 60
+        const fixtureDate = new Date(now.getTime() + oneMinute)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureLive(fixtureItem)).toBe(false)
+      })
     })
 
     describe("isFixtureNearToStart", () => {
@@ -153,32 +177,77 @@ describe("domain/fixture", () => {
       it("return false if the match is in the past", () => {
         const days = 5
         const fixtureDate = new Date(now.getDate() - days)
-        // Ten minutes in milliseconds
-        const minutes = 10 * 1000 * 60
         fixtureItem = {
           fixture: { id: 1, date: fixtureDate.toString() },
         } as FixtureItem
-        expect(isFixtureNearToStart(fixtureItem, minutes)).toBe(false)
+        expect(isFixtureNearToStart(fixtureItem)).toBe(false)
       })
 
-      it("return true if the match is <= 10 minutes away", () => {
+      it("return true if the match is <= 20 minutes away", () => {
         // Ten minutes in milliseconds
         const tenMinutes = 10 * 1000 * 60
         const fixtureDate = new Date(now.getTime() + tenMinutes)
         fixtureItem = {
           fixture: { id: 1, date: fixtureDate.toString() },
         } as FixtureItem
-        expect(isFixtureNearToStart(fixtureItem, tenMinutes)).toBe(true)
+        expect(isFixtureNearToStart(fixtureItem)).toBe(true)
       })
 
-      it("return false if the match is > 10 minutes away", () => {
-        const tenMinutes = 10
-        const elevenMinutes = 11
-        const fixtureDate = new Date(now.getTime() + elevenMinutes * 1000 * 60)
+      it("return false if the match is > 20 minutes away", () => {
+        // thirty minutes in milliseconds
+        const thirtyMinutes = 30 * 1000 * 60
+        const fixtureDate = new Date(now.getTime() + thirtyMinutes)
         fixtureItem = {
           fixture: { id: 1, date: fixtureDate.toString() },
         } as FixtureItem
-        expect(isFixtureNearToStart(fixtureItem, tenMinutes)).toBe(false)
+        expect(isFixtureNearToStart(fixtureItem)).toBe(false)
+      })
+    })
+    describe("isFixtureFromToday", () => {
+      let fixtureItem: FixtureItem
+      const now = new Date()
+
+      it("return false if the match is in the past days", () => {
+        const days = 5
+        const fixtureDate = new Date(now.getDate() - days)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureFromToday(fixtureItem)).toBe(false)
+      })
+
+      it("return false if the match is in the future days", () => {
+        const days = 1
+        const fixtureDate = new Date(now.getDate() + days)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureFromToday(fixtureItem)).toBe(false)
+      })
+
+      it("return true if the match is in the past but today", () => {
+        const minutes = 20 * 1000 * 60
+        const fixtureDate = new Date(now.getTime() - minutes)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureFromToday(fixtureItem)).toBe(true)
+      })
+
+      it("return true if the match is the future but today", () => {
+        const minutes = 120 * 1000 * 60
+        const fixtureDate = new Date(now.getTime() + minutes)
+        fixtureItem = {
+          fixture: { id: 1, date: fixtureDate.toString() },
+        } as FixtureItem
+        expect(isFixtureFromToday(fixtureItem)).toBe(true)
+      })
+
+      it("return true if the match is now", () => {
+        fixtureItem = {
+          fixture: { id: 1, date: new Date().toDateString() },
+        } as FixtureItem
+        expect(isFixtureFromToday(fixtureItem)).toBe(true)
       })
     })
   })
@@ -271,6 +340,7 @@ describe("domain/fixture", () => {
     })
     afterEach(() => {
       postTweetsMocked.mockClear()
+      jest.clearAllMocks()
     })
     describe("postFixtureEvents", () => {
       const fixtureItem = liveFixturesMock.response[4] as FixtureItem
@@ -297,6 +367,52 @@ describe("domain/fixture", () => {
         expect(postTweetsMocked).toHaveBeenCalled()
         expect(postTweetsMocked).toHaveBeenCalledTimes(1)
       })
+    })
+
+    describe("postEventsOfFixture", () => {
+      let fixtureItem
+      beforeEach(() => {
+        fixtureItem = worldCupLiveFixturesMock.response[0] as FixtureItem
+        const fixtureDate = new Date(fixtureItem.fixture.date)
+        fixtureItem.fixture.date = new Date(
+          fixtureDate.getTime() - 40 * 60 * 1000
+        ).toString()
+        getFixturesMocked
+          // Mock the first call wih the same fixtureItem but the date is 40 minutes before the current time.
+          .mockReturnValueOnce(
+            Promise.resolve([
+              fixtureItem,
+              worldCupLiveFixturesMock.response[1],
+            ] as FixtureItem[])
+          )
+          // Mock second call with the same fixtureItem but the status is now "FT" (full time)
+          .mockReturnValueOnce(
+            Promise.resolve([
+              {
+                ...fixtureItem,
+                fixture: { ...fixtureItem.fixture, status: { short: "FT" } },
+              } as FixtureItem,
+              worldCupLiveFixturesMock.response[1],
+            ] as FixtureItem[])
+          )
+      })
+
+      it(
+        "call post twitter functions correctly",
+        async () => {
+          const _ = await postEventsOfFixture(fixtureItem)
+          const getTweetTextForFixtureEventSpy = jest.spyOn(
+            helpers,
+            "getTweetTextForFixtureEvent"
+          )
+          expect(postTweetsMocked).toHaveBeenCalled()
+          expect(postTweetsMocked).toHaveBeenCalledTimes(1)
+          expect(getTweetTextForFixtureEventSpy).toHaveBeenCalledTimes(
+            fixtureItem.events.length
+          )
+        },
+        60000 * 3
+      )
     })
   })
 })
