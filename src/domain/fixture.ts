@@ -3,6 +3,7 @@ import { FixtureItem, MatchEvent, MatchEventWithId } from "../utils/types"
 import { sleep } from "../utils"
 import { postTweets } from "../api/twitterAPI"
 import { getTweetTextForFixtureEvent } from "./helpers"
+import { TournamentStore } from "../model/TournamentStore"
 
 // Fixtures API functions
 
@@ -122,38 +123,33 @@ export function isFixtureInThePast(item: FixtureItem): boolean {
 
 export async function postEventsOfFixture(fixtureItem: FixtureItem) {
   let liveFixture = fixtureItem
-  let eventsPosted: MatchEventWithId[] = []
+  const tournamentStore = TournamentStore.getInstance()
+  const liveFixtureId = liveFixture.fixture.id
   while (isFixtureLive(liveFixture)) {
     console.log(
-      `-------------------------- Fixture live ${fixtureItem.fixture.id} --------------------------\n`
+      `-------------------------- Fixture live ${liveFixtureId} --------------------------\n`
     )
-    let liveFixtureUpdated = await getLiveFixture(
-      liveFixture.fixture.id,
-      fixtureItem.league.id
-    )
-    liveFixture = liveFixtureUpdated || liveFixture
-    let events = (liveFixtureUpdated?.events || []).sort(
-      (eventA, eventB) => eventA.time.elapsed - eventB.time.elapsed
-    )
+    liveFixture =
+      (await getLiveFixture(liveFixture.fixture.id, fixtureItem.league.id)) ||
+      liveFixture
 
-    // Events doesn't have id, so I add it to check that the event is not posted
-    let eventsWithId: MatchEventWithId[] = events.map((matchEvent, index) => {
-      return { id: index, ...matchEvent }
-    })
-    eventsWithId = eventsWithId.filter(
-      matchEvent =>
-        !eventsPosted.find(eventPosted => eventPosted.id === matchEvent.id)
+    tournamentStore.setLiveFixturesEvents(
+      liveFixture.fixture.id,
+      liveFixture.events || []
     )
-    eventsPosted = eventsPosted.concat(eventsWithId)
-    if (eventsWithId.length > 0) {
+    let fixtureEvents = tournamentStore.getLiveFixturesEventsNotPosted(
+      fixtureItem.fixture.id
+    )
+    if (fixtureEvents.length > 0) {
       console.log(
-        `-------------------------- Post events of fixture ${fixtureItem.fixture.id} --------------------------\n`
+        `-------------------------- Post events of fixture ${liveFixtureId} --------------------------\n`
       )
-      console.log(`--- Fixture events: ${eventsWithId.length}.\n`)
-      await postFixtureEvents(liveFixture, eventsWithId)
+      console.log(`--- Fixture events: ${fixtureEvents.length}.\n`)
+      await postFixtureEvents(liveFixture, fixtureEvents)
+      tournamentStore.setLiveFixturesEventsPosted(liveFixtureId)
     } else {
       console.log(
-        `-------------------------- No new event for this fixture ${fixtureItem.fixture.id} --------------------------\n`
+        `-------------------------- No new event for this fixture ${liveFixtureId} --------------------------\n`
       )
     }
     await sleep(60 * 1000)

@@ -1,85 +1,12 @@
-import { FixtureItem } from "./utils/types"
 import { sleep } from "./utils"
 import { SerieA } from "./api/leaguesAPI"
 import {
   getFixturesFromLeague,
-  isFixtureNearToStart,
-  compareFixtureDates,
   postEventsOfFixture,
-  isFixtureLive,
   postReadyToStartFixtures,
-  isFixtureFromToday,
   areFixturesToPost,
 } from "./domain/fixture"
-
-class TournamentStore {
-  private static instance: TournamentStore
-
-  fixtureItems: FixtureItem[] = []
-  liveFixtures: FixtureItem[] = []
-  liveFixturesPosted: FixtureItem[] = []
-  fixturesNearToStart: FixtureItem[] = []
-  fixturesNearToStarPosted: FixtureItem[] = []
-  fixturesFromToday: FixtureItem[] = []
-
-  private constructor() {}
-
-  public static getInstance(): TournamentStore {
-    if (!TournamentStore.instance) {
-      TournamentStore.instance = new TournamentStore()
-    }
-    return TournamentStore.instance
-  }
-
-  public setFixtureItems(fixtures: FixtureItem[]) {
-    this.fixtureItems = fixtures.sort((itemA, itemB) =>
-      compareFixtureDates(itemA, itemB)
-    )
-    this.liveFixtures = this.fixtureItems.filter(fixtureItem =>
-      isFixtureLive(fixtureItem)
-    )
-    this.fixturesNearToStart = this.fixtureItems.filter(fixtureItem =>
-      isFixtureNearToStart(fixtureItem)
-    )
-    this.fixturesFromToday = this.fixtureItems.filter(fixtureItem =>
-      isFixtureFromToday(fixtureItem)
-    )
-  }
-
-  public getLiveFixturesNotPosted(): FixtureItem[] {
-    this.liveFixtures = this.fixtureItems.filter(
-      fixtureItem =>
-        isFixtureLive(fixtureItem) &&
-        !this.liveFixturesPosted.find(
-          ({ fixture }) => fixture.id === fixtureItem.fixture.id
-        )
-    )
-    return this.liveFixtures
-  }
-
-  public setLiveFixturesPosted() {
-    this.liveFixturesPosted = this.liveFixturesPosted.concat(
-      this.getLiveFixturesNotPosted()
-    )
-  }
-
-  public getFixturesNearToStartNotPosted(): FixtureItem[] {
-    this.fixturesNearToStart = this.fixtureItems.filter(
-      fixtureItem =>
-        isFixtureNearToStart(fixtureItem) &&
-        !this.fixturesNearToStarPosted.find(
-          ({ fixture }) => fixture.id === fixtureItem.fixture.id
-        )
-    )
-    return this.fixturesNearToStart
-  }
-
-  public setFixturesNearToStartPosted() {
-    this.fixturesNearToStarPosted = this.fixturesNearToStarPosted.concat(
-      this.getFixturesNearToStartNotPosted()
-    )
-  }
-}
+import { TournamentStore } from "./model/TournamentStore"
 
 async function main() {
   console.log(
