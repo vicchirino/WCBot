@@ -1,26 +1,28 @@
 import { sleep } from "./utils"
 import { SerieA } from "./api/leaguesAPI"
 import {
-  getFixturesFromLeague,
-  postEventsOfFixture,
-  postReadyToStartFixtures,
-  areFixturesToPost,
-} from "./domain/fixture"
+  areMatchesToPost,
+  postReadyToStartMatches,
+  postEventsOfMatch,
+} from "./domain/match"
 import { TournamentStore } from "./model/TournamentStore"
+import { Match } from "./model/Match"
+import { getFixturesFromLeague } from "./api/fixturesAPI"
 
 async function main() {
   console.log(
     "-------------------------- Program start --------------------------\n"
   )
   let fixtureItems = await getFixturesFromLeague(SerieA, "2022")
+  let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
   let today = new Date()
 
   console.log(`--- Today is: ${today.toDateString()}\n`)
   console.log(`--- League: WorldCup.\n`)
-  console.log(`--- Fixtures: ${fixtureItems.length}.\n`)
+  console.log(`--- Matches: ${matches.length}.\n`)
 
   const tournamentStore = TournamentStore.getInstance()
-  tournamentStore.setFixtureItems(fixtureItems)
+  tournamentStore.setMatches(matches)
 
   while (true) {
     if (today.getDay() !== new Date().getDay()) {
@@ -29,45 +31,46 @@ async function main() {
       )
       today = new Date()
       fixtureItems = await getFixturesFromLeague(SerieA, "2022")
+      let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
       console.log(`--- Today is: ${today.toDateString()}\n`)
-      console.log(`--- Fixtures: ${fixtureItems.length}.\n`)
-      tournamentStore.setFixtureItems(fixtureItems)
+      console.log(`--- Matches: ${matches.length}.\n`)
+      tournamentStore.setMatches(matches)
     }
 
-    if (areFixturesToPost(tournamentStore.fixturesFromToday)) {
+    if (areMatchesToPost(tournamentStore.matchesFromToday)) {
       console.log(
-        "-------------------------- Fixtures ready to post! --------------------------\n"
+        "-------------------------- Matches ready to post! --------------------------\n"
       )
-      // Post fixtures ready to start
-      let fixturesNearToStartNotPosted =
-        tournamentStore.getFixturesNearToStartNotPosted()
-      if (fixturesNearToStartNotPosted.length > 0) {
+      // Post Matches ready to start
+      let matchesNearToStartNotPosted =
+        tournamentStore.getMatchesNearToStartNotPosted()
+      if (matchesNearToStartNotPosted.length > 0) {
         console.log(
-          "-------------------------- Post fixtures near to start --------------------------\n"
+          "-------------------------- Post Matches near to start --------------------------\n"
         )
         console.log(
-          `--- Fixtures near to start: ${fixturesNearToStartNotPosted.length}.\n`
+          `--- Matches near to start: ${matchesNearToStartNotPosted.length}.\n`
         )
-        postReadyToStartFixtures(fixturesNearToStartNotPosted)
-        tournamentStore.setFixturesNearToStartPosted()
+        postReadyToStartMatches(matchesNearToStartNotPosted)
+        tournamentStore.setMatchesNearToStartPosted()
       }
 
-      // Post events of fixtures live
-      let liveFixturesNotPosted = tournamentStore.getLiveFixturesNotPosted()
-      if (liveFixturesNotPosted.length > 0) {
+      // Post events of matches live
+      let liveMatchesNotPosted = tournamentStore.getLiveMatchesNotPosted()
+      if (liveMatchesNotPosted.length > 0) {
         console.log(
-          "-------------------------- Post events of live fixtures --------------------------\n"
+          "-------------------------- Post events of live matches --------------------------\n"
         )
-        console.log(`--- Fixtures live: ${liveFixturesNotPosted.length}.\n`)
-        for (const index in liveFixturesNotPosted) {
-          postEventsOfFixture(liveFixturesNotPosted[index])
+        console.log(`--- Matches live: ${liveMatchesNotPosted.length}.\n`)
+        for (const index in liveMatchesNotPosted) {
+          postEventsOfMatch(liveMatchesNotPosted[index])
         }
-        tournamentStore.setLiveFixturesPosted()
+        tournamentStore.setLiveMatchesPosted()
       }
       await sleep(60 * 1000)
     } else {
       console.log(
-        "-------------------------- No more fixtures today! --------------------------\n"
+        "-------------------------- No more matches today! --------------------------\n"
       )
     }
   }

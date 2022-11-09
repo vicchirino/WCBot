@@ -21,7 +21,7 @@ type League = {
   round: string | null
 }
 
-type Team = {
+export type Team = {
   id: number
   name: string
   logo: string
@@ -90,7 +90,7 @@ export type MatchEventWithId = {
 export type MatchEvent = {
   time: {
     elapsed: number
-    // extra: number | null;
+    extra: number | null
   }
   team: Team
   player: Player

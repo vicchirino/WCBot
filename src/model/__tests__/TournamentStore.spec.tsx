@@ -1,4 +1,5 @@
 import { FixtureItem, MatchEvent } from "../../utils/types"
+import { Match } from "../Match"
 import { TournamentStore } from "../TournamentStore"
 
 describe("TournamentStore", () => {
@@ -11,7 +12,7 @@ describe("TournamentStore", () => {
     expect(tournamentStore).toBe(tournamentStore2)
   })
 
-  describe("setFixtureItems", () => {
+  describe("setMatches", () => {
     it("set correctly fixtureItems", () => {
       const fixtureItems = [
         {
@@ -34,16 +35,17 @@ describe("TournamentStore", () => {
         },
       ] as FixtureItem[]
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setFixtureItems(fixtureItems)
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
 
-      expect(tournamentStore.fixtureItems).toHaveLength(fixtureItems.length)
-      expect(tournamentStore.fixtureItems[0].fixture.id).toEqual(3)
-      expect(tournamentStore.fixtureItems[1].fixture.id).toEqual(2)
-      expect(tournamentStore.fixtureItems[2].fixture.id).toEqual(1)
+      expect(tournamentStore.matches).toHaveLength(fixtureItems.length)
+      expect(tournamentStore.matches[0].fixtureId()).toEqual(3)
+      expect(tournamentStore.matches[1].fixtureId()).toEqual(2)
+      expect(tournamentStore.matches[2].fixtureId()).toEqual(1)
     })
   })
 
-  describe("getLiveFixturesNotPosted", () => {
+  describe("getLiveMatchesNotPosted", () => {
     beforeEach(() => {
       fixtureItems = [
         {
@@ -74,20 +76,22 @@ describe("TournamentStore", () => {
     })
     it("return all the fixture items when first run", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setFixtureItems(fixtureItems)
-      expect(tournamentStore.getLiveFixturesNotPosted().length).toBe(
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      expect(tournamentStore.getLiveMatchesNotPosted().length).toBe(
         fixtureItems.length - 1
       )
     })
     it("return filtered fixture items when there are live fixture items posted", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setFixtureItems(fixtureItems)
-      tournamentStore.setLiveFixturesPosted()
-      expect(tournamentStore.getLiveFixturesNotPosted().length).toBe(0)
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      tournamentStore.setLiveMatchesPosted()
+      expect(tournamentStore.getLiveMatchesNotPosted().length).toBe(0)
     })
   })
 
-  describe("getFixturesNearToStartNotPosted", () => {
+  describe("getMatchesNearToStartNotPosted", () => {
     beforeEach(() => {
       const today = new Date()
       const tenMinutes = 10 * 1000 * 60
@@ -128,17 +132,19 @@ describe("TournamentStore", () => {
 
     it("return all fixtures near to start in first run", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setFixtureItems(fixtureItems)
-      expect(tournamentStore.getFixturesNearToStartNotPosted().length).toBe(
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      expect(tournamentStore.getMatchesNearToStartNotPosted().length).toBe(
         fixtureItems.length - 2
       )
     })
 
     it("return no fixtures when were already posted", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setFixtureItems(fixtureItems)
-      tournamentStore.setFixturesNearToStartPosted()
-      expect(tournamentStore.getFixturesNearToStartNotPosted().length).toBe(0)
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      tournamentStore.setMatchesNearToStartPosted()
+      expect(tournamentStore.getMatchesNearToStartNotPosted().length).toBe(0)
     })
   })
 
@@ -170,13 +176,13 @@ describe("TournamentStore", () => {
 
     it("set correctly live events for the fixture", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setLiveFixturesEvents(fixtureId, matchEvents)
+      tournamentStore.setLiveMatchesEvents(fixtureId, matchEvents)
 
-      const fixtureEvents = tournamentStore.fixturesEvents[fixtureId]
-      expect(fixtureEvents.liveFixtureEventsWithId).toHaveLength(3)
-      expect(fixtureEvents.liveFixtureEventsWithId[0].time.elapsed).toEqual(13)
-      expect(fixtureEvents.liveFixtureEventsWithId[1].time.elapsed).toEqual(18)
-      expect(fixtureEvents.liveFixtureEventsWithId[2].time.elapsed).toEqual(50)
+      const matchevents = tournamentStore.matchesEvents[fixtureId]
+      expect(matchevents.liveMatchesEventsWithId).toHaveLength(3)
+      expect(matchevents.liveMatchesEventsWithId[0].time.elapsed).toEqual(13)
+      expect(matchevents.liveMatchesEventsWithId[1].time.elapsed).toEqual(18)
+      expect(matchevents.liveMatchesEventsWithId[2].time.elapsed).toEqual(50)
     })
   })
 
@@ -207,18 +213,17 @@ describe("TournamentStore", () => {
     })
     it("return all events from the fixture in first run", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setLiveFixturesEvents(fixtureId, matchEvents)
+      tournamentStore.setLiveMatchesEvents(fixtureId, matchEvents)
       expect(
-        tournamentStore.getLiveFixturesEventsNotPosted(fixtureId).length
+        tournamentStore.getLiveMatchesEventsNotPosted(fixtureId).length
       ).toBe(3)
     })
     it("return no events after they are posted", () => {
       const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setLiveFixturesEvents(fixtureId, matchEvents)
-      tournamentStore.setLiveFixturesPosted()
-      tournamentStore.setLiveFixturesEventsPosted(fixtureId)
+      tournamentStore.setLiveMatchesEvents(fixtureId, matchEvents)
+      tournamentStore.setLiveMatchesEventsPosted(fixtureId)
       expect(
-        tournamentStore.getLiveFixturesEventsNotPosted(fixtureId).length
+        tournamentStore.getLiveMatchesEventsNotPosted(fixtureId).length
       ).toBe(0)
     })
   })
