@@ -75,7 +75,9 @@ export async function postEventsOfMatch(match: Match) {
       )
       console.log(`--- Match events: ${matchEvents.length}.\n`)
       await postTweets(
-        matchEvents.map(matchEvent => match.getTweetTextForEvent(matchEvent))
+        matchEvents.map(matchEvent =>
+          liveMatch.getTweetTextForEvent(matchEvent)
+        )
       )
       tournamentStore.setLiveMatchesEventsPosted(liveFixtureId)
     } else {
