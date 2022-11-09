@@ -43,28 +43,39 @@ export function isFixtureFromToday(fixture: FixtureItem): boolean {
   )
 }
 
+/**
+ * If now is between the first and last match of the day, there are live fixtures.
+ * first: firstMatchOfTheDayDate - 20 minutes
+ * last: lastMatchOfTheDayDate + 120 minutes
+ */
+
 export function areFixturesToPost(fixtureItems: FixtureItem[]): boolean {
   const now = new Date()
+  const estimatedMatchDuration = 120 * 60 * 1000 // 120 minutes
+  const nearToStartEstimatedTime = 20 * 60 * 1000 // 20 minutes
   if (fixtureItems.length === 0) {
     return false
   }
-  const firstMatchOfTheDay = fixtureItems[0]
-  const lastMatchOfTheDay = fixtureItems[fixtureItems.length - 1]
-
+  const sortedFixtureItems = fixtureItems.sort((itemA, itemB) =>
+    compareFixtureDates(itemA, itemB)
+  )
+  const firstMatchOfTheDay = sortedFixtureItems[0]
   const firstMatchOfTheDayDate = new Date(firstMatchOfTheDay.fixture.date)
+  const firstMatchDateWithMargin = new Date(
+    firstMatchOfTheDayDate.getTime() - nearToStartEstimatedTime
+  )
+  if (sortedFixtureItems.length === 1) {
+    const firstMatchEstimatedEndDate = new Date(
+      firstMatchOfTheDayDate.getTime() + estimatedMatchDuration
+    )
+    now > firstMatchDateWithMargin && now < firstMatchEstimatedEndDate
+  }
+
+  const lastMatchOfTheDay = sortedFixtureItems[sortedFixtureItems.length - 1]
   const lastMatchOfTheDayDate = new Date(lastMatchOfTheDay.fixture.date)
 
-  /**
-   * If now is between the first and last match of the day, there are live fixtures.
-   * first: firstMatchOfTheDayDate - 20 minutes
-   * last: lastMatchOfTheDayDate + 120 minutes
-   */
-
-  const firstMatchDateWithMargin = new Date(
-    firstMatchOfTheDayDate.getTime() - 20 * 60 * 1000
-  )
   const lastMatchDateWithMargin = new Date(
-    lastMatchOfTheDayDate.getTime() + 120 * 60 * 1000
+    lastMatchOfTheDayDate.getTime() + estimatedMatchDuration
   )
 
   return now > firstMatchDateWithMargin && now < lastMatchDateWithMargin

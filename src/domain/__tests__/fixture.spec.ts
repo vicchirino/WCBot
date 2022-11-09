@@ -12,6 +12,7 @@ import {
   postReadyToStartFixtures,
   isFixtureFromToday,
   postEventsOfFixture,
+  areFixturesToPost,
 } from "../fixture"
 import liveFixturesMock from "../../utils/mocks/live_fixtures_response.json"
 import worldCupFixturesMock from "../../utils/mocks/world_cup_fixtures.json"
@@ -203,6 +204,7 @@ describe("domain/fixture", () => {
         expect(isFixtureNearToStart(fixtureItem)).toBe(false)
       })
     })
+
     describe("isFixtureFromToday", () => {
       let fixtureItem: FixtureItem
       const now = new Date()
@@ -248,6 +250,110 @@ describe("domain/fixture", () => {
           fixture: { id: 1, date: new Date().toDateString() },
         } as FixtureItem
         expect(isFixtureFromToday(fixtureItem)).toBe(true)
+      })
+    })
+
+    describe("areFixturesToPost", () => {
+      let fixtureItems: FixtureItem[]
+      const today = new Date()
+
+      describe("when no fixtures are passed", () => {
+        it("return false ", () => {
+          fixtureItems = []
+          expect(areFixturesToPost(fixtureItems)).toBe(false)
+        })
+      })
+
+      describe("when only one fixture is passed", () => {
+        it("return false if the fixture is not on the expected dates", () => {
+          const tomorrow = new Date()
+          tomorrow.setDate(today.getDate() + 1)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: tomorrow.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(false)
+        })
+
+        it("return true if the fixture is near to start", () => {
+          const minutes = 10 * 1000 * 60
+          const fixtureDate = new Date(today.getTime() + minutes)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: fixtureDate.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(true)
+        })
+
+        it("return true if the fixture is happening", () => {
+          const minutes = 40 * 1000 * 60
+          const fixtureDate = new Date(today.getTime() - minutes)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: fixtureDate.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(true)
+        })
+      })
+
+      describe("when more than 1 fixture is passed", () => {
+        it("return false if there aren't fixtures on the expected dates", () => {
+          const tomorrow = new Date()
+          tomorrow.setDate(today.getDate() + 1)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: tomorrow.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 2, date: tomorrow.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 3, date: tomorrow.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(false)
+        })
+
+        it("return true if there is one fixture near to start", () => {
+          const minutes = 10 * 1000 * 60
+          const tomorrow = new Date()
+          tomorrow.setDate(today.getDate() + 1)
+          const fixtureDate = new Date(today.getTime() + minutes)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: tomorrow.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 2, date: fixtureDate.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 3, date: tomorrow.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(true)
+        })
+
+        it("return true if there is one fixture happening", () => {
+          const minutes = 40 * 1000 * 60
+          const tomorrow = new Date()
+          tomorrow.setDate(today.getDate() + 1)
+          const fixtureDate = new Date(today.getTime() - minutes)
+          fixtureItems = [
+            {
+              fixture: { id: 1, date: tomorrow.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 2, date: fixtureDate.toString() },
+            } as FixtureItem,
+            {
+              fixture: { id: 3, date: tomorrow.toString() },
+            } as FixtureItem,
+          ]
+          expect(areFixturesToPost(fixtureItems)).toBe(true)
+        })
       })
     })
   })
