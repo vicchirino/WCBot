@@ -6,6 +6,16 @@
   "author": "Victor Chirino <vicchirino@gmail.com>",
   "license": "MIT",
   "private": false,
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Football",
+    "World Cup",
+    "Football Bot",
+    "FIFA",
+    "FIFA World Cup"
+  ],
   "scripts": {
     "start": "ts-node src/index.tsx",
     "test": "jest",
