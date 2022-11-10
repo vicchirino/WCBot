@@ -48,6 +48,11 @@ export class Match {
     )
   }
 
+  isFixtureFinished(): boolean {
+    const status = this.getFixtureStatus()
+    return status === "FT" || status === "AET" || status === "PEN"
+  }
+
   isFixtureHappeningNow(): boolean {
     const now = new Date()
     const minutes = 90 * 60 * 1000
@@ -121,21 +126,21 @@ export class Match {
     }
     if (matchEvent.type === "Card") {
       if (matchEvent.detail === "Yellow Card") {
-        return `➡️ Yellow card\n🟡 ${matchEvent.player.name} - ${
+        return `🟡 Yellow card\n\n👤 ${matchEvent.player.name} - ${
           matchEvent.team.name
         }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
           this.goals().home
         } - ${this.goals().away} ${this.teams().away.name}`
       }
       if (matchEvent.detail === "Second Yellow card") {
-        return `➡️ Second yellow card\n🟡🟡 ${matchEvent.player.name} - ${
+        return `🟡🟡 Second yellow card\n\n👤 ${matchEvent.player.name} - ${
           matchEvent.team.name
         }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
           this.goals().home
         } - ${this.goals().away} ${this.teams().away.name}`
       }
       if (matchEvent.detail === "Red Card") {
-        return `➡️ Red card\n🔴 ${matchEvent.player.name} - ${
+        return `🔴 Red card\n\n👤 ${matchEvent.player.name} - ${
           matchEvent.team.name
         }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
           this.goals().home
@@ -161,7 +166,7 @@ export class Match {
     if (matchEvent.type === "subst") {
       return `🔄 Substituion - ${matchEvent.team.name}\n\n➡️ ${
         matchEvent.player.name
-      }\n⬅️ ${matchEvent.assist.name}\n⏰ ${matchEvent.time.elapsed}' ${
+      }\n⬅️ ${matchEvent.assist.name}\n\n⏰ ${matchEvent.time.elapsed}' ${
         this.teams().home.name
       } ${this.goals().home} - ${this.goals().away} ${this.teams().away.name}`
     }
@@ -169,8 +174,18 @@ export class Match {
   }
 
   getTextForReadyToStart(): string {
-    return `⚽️ ${this.teams().home.name} vs ${
+    return `🔔 ${this.teams().home.name} vs ${
       this.teams().away.name
-    } is about to start!`
+    } is about to start!\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}`
+  }
+
+  getTextForFinished(): string {
+    return `⏰ End of match\n\n${this.teams().home.name} ${
+      this.goals().home
+    } - ${this.goals().away} ${this.teams().away.name}`
+  }
+
+  getTextForStarted(): string {
+    return `⏰ Kick off: ${this.teams().home.name} - ${this.teams().away.name}`
   }
 }

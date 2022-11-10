@@ -202,6 +202,58 @@ describe("Match", () => {
     })
   })
 
+  describe("getTextForFinished", () => {
+    it("return the correct text", () => {
+      const fixtureItem = {
+        fixture: { id: 1, date: new Date().toDateString() },
+        teams: {
+          home: {
+            id: 13,
+            name: "Senegal",
+          },
+          away: {
+            id: 1118,
+            name: "Netherlands",
+          },
+        },
+        goals: {
+          home: 1,
+          away: 2,
+        },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.getTextForFinished()).toBe(
+        `⏰ End of match\n\nSenegal 1 - 2 Netherlands`
+      )
+    })
+  })
+
+  describe("getTextForStarted", () => {
+    it("return the correct text", () => {
+      const fixtureItem = {
+        fixture: { id: 1, date: new Date().toDateString() },
+        teams: {
+          home: {
+            id: 13,
+            name: "Senegal",
+          },
+          away: {
+            id: 1118,
+            name: "Netherlands",
+          },
+        },
+        goals: {
+          home: 1,
+          away: 2,
+        },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.getTextForStarted()).toBe(
+        `⏰ Kick off: Senegal - Netherlands`
+      )
+    })
+  })
+
   describe("getTextForReadyToStart", () => {
     it("return the correct text", () => {
       const fixtureItem = {
@@ -219,7 +271,9 @@ describe("Match", () => {
       } as FixtureItem
       match = new Match(fixtureItem)
       expect(match.getTextForReadyToStart()).toBe(
-        "⚽️ Senegal vs Netherlands is about to start!"
+        `🔔 Senegal vs Netherlands is about to start!\n\n⏰ ${new Date(
+          fixtureItem.fixture.date
+        ).toLocaleTimeString()}`
       )
     })
   })
@@ -297,58 +351,58 @@ describe("Match", () => {
           "➡️  Own Goal\n\n⚽ Foo - Senegal\n\n⏰ 14' Senegal 1 - 2 Netherlands"
         )
       })
-      // describe("Normal Goal", () => {
-      //   it("return correct text when there is an assist", () => {
-      //     matchEvent = {
-      //       time: {
-      //         elapsed: 14,
-      //       },
-      //       team: {
-      //         id: 1118,
-      //         name: "Senegal",
-      //       },
-      //       player: {
-      //         id: 76342,
-      //         name: "Foo",
-      //       },
-      //       assist: {
-      //         id: 32423,
-      //         name: "Boo",
-      //       },
-      //       type: "Goal",
-      //       detail: "Normal Goal",
-      //     } as MatchEvent
-      //     match = new Match(fixtureItem)
-      //     expect(match.getTextForEvent(matchEvent)).toBe(
-      //       "➡️  Goal!!\n\n⚽ Foo - Senegal\n👥 Boo\n\n⏰ 14' Senegal 1 - 2 Netherlands"
-      //     )
-      //   })
-      //   it("return correct text when there is not an assist", () => {
-      //     matchEvent = {
-      //       time: {
-      //         elapsed: 14,
-      //       },
-      //       team: {
-      //         id: 1118,
-      //         name: "Senegal",
-      //       },
-      //       player: {
-      //         id: 76342,
-      //         name: "Foo",
-      //       },
-      //       assist: {
-      //         id: null,
-      //         name: null,
-      //       },
-      //       type: "Goal",
-      //       detail: "Normal Goal",
-      //     } as MatchEvent
-      //     match = new Match(fixtureItem)
-      //     expect(match.getTextForEvent(matchEvent)).toBe(
-      //       "➡️  Goal!!\n\n⚽ Foo - Senegal\n\n⏰ 14' Senegal 1 - 2 Netherlands"
-      //     )
-      //   })
-      // })
+      describe("Normal Goal", () => {
+        it("return correct text when there is an assist", () => {
+          matchEvent = {
+            time: {
+              elapsed: 14,
+            },
+            team: {
+              id: 1118,
+              name: "Senegal",
+            },
+            player: {
+              id: 76342,
+              name: "Foo",
+            },
+            assist: {
+              id: 32423,
+              name: "Boo",
+            },
+            type: "Goal",
+            detail: "Normal Goal",
+          } as MatchEvent
+          match = new Match(fixtureItem)
+          expect(match.getTextForEvent(matchEvent)).toBe(
+            "➡️  Goal!!\n\n⚽ Foo - Senegal\n👥 Boo\n\n⏰ 14' Senegal 1 - 2 Netherlands"
+          )
+        })
+        it("return correct text when there is not an assist", () => {
+          matchEvent = {
+            time: {
+              elapsed: 14,
+            },
+            team: {
+              id: 1118,
+              name: "Senegal",
+            },
+            player: {
+              id: 76342,
+              name: "Foo",
+            },
+            assist: {
+              id: null,
+              name: null,
+            },
+            type: "Goal",
+            detail: "Normal Goal",
+          } as MatchEvent
+          match = new Match(fixtureItem)
+          expect(match.getTextForEvent(matchEvent)).toBe(
+            "➡️  Goal!!\n\n⚽ Foo - Senegal\n\n⏰ 14' Senegal 1 - 2 Netherlands"
+          )
+        })
+      })
       it("return correct text for Missed Penalty", () => {
         matchEvent = {
           time: {
@@ -375,6 +429,7 @@ describe("Match", () => {
         )
       })
     })
+
     describe("when the type is 'Card'", () => {
       it("return correct text for Yellow Card", () => {
         matchEvent = {
@@ -398,7 +453,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️ Yellow card\n🟡 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
+          "🟡 Yellow card\n\n👤 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
         )
       })
 
@@ -424,7 +479,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️ Second yellow card\n🟡🟡 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
+          "🟡🟡 Second yellow card\n\n👤 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
         )
       })
 
@@ -450,7 +505,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️ Red card\n🔴 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
+          "🔴 Red card\n\n👤 De Jong - Netherlands\n\n⏰ 14' Senegal 1 - 2 Netherlands"
         )
       })
     })
@@ -478,7 +533,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🔄 Substituion - Netherlands\n\n➡️ Robben\n⬅️ Van Persie\n⏰ 14' Senegal 1 - 2 Netherlands"
+          "🔄 Substituion - Netherlands\n\n➡️ Robben\n⬅️ Van Persie\n\n⏰ 14' Senegal 1 - 2 Netherlands"
         )
       })
     })

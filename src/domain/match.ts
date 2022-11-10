@@ -1,4 +1,4 @@
-import { postTweets } from "../api/twitterAPI"
+import { postTweet, postTweets } from "../api/twitterAPI"
 import { Match } from "../model/Match"
 import { MatchEventWithId } from "../utils/types"
 
@@ -57,4 +57,12 @@ export async function postEventsOfMatch(
 
 export function postReadyToStartMatches(matches: Match[]) {
   postTweets(matches.map(match => match.getTextForReadyToStart()))
+}
+
+export function postMatchFinished(match: Match) {
+  postTweet(match.getTextForFinished())
+}
+
+export function postMatchStarted(matches: Match[]) {
+  postTweets(matches.map(match => match.getTextForStarted()))
 }

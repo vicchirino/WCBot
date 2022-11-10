@@ -3,6 +3,8 @@ import { SerieA } from "./api/leaguesAPI"
 import {
   areMatchesToPost,
   postEventsOfMatch,
+  postMatchFinished,
+  postMatchStarted,
   postReadyToStartMatches,
 } from "./domain/match"
 import { TournamentStore } from "./model/TournamentStore"
@@ -22,7 +24,14 @@ export async function processMatchEvents(match: Match) {
       liveMatch.fixtureId(),
       liveMatch.leagueId()
     )
-    liveMatch = updatedMatch ? new Match(updatedMatch) : liveMatch
+    if (!updatedMatch) {
+      console.log(
+        `-------------------------- Match finished ${liveFixtureId} --------------------------\n`
+      )
+      postMatchFinished(liveMatch)
+      break
+    }
+    liveMatch = new Match(updatedMatch)
 
     tournamentStore.setLiveMatchesEvents(
       liveMatch.fixtureId(),
@@ -45,7 +54,6 @@ export async function processMatchEvents(match: Match) {
     }
     await sleep(60 * 1000)
   }
-  console.log("End no more matches live")
 }
 
 export async function main() {
@@ -101,6 +109,7 @@ export async function main() {
           "-------------------------- Post events of live matches --------------------------\n"
         )
         console.log(`--- Matches live: ${liveMatchesNotPosted.length}.\n`)
+        postMatchStarted(liveMatchesNotPosted)
         for (const index in liveMatchesNotPosted) {
           processMatchEvents(liveMatchesNotPosted[index])
         }
