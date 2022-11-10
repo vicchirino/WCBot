@@ -1,5 +1,4 @@
 import { sleep } from "./utils"
-import { SerieA } from "./api/leaguesAPI"
 import {
   areMatchesToPost,
   postEventsOfMatch,
@@ -56,11 +55,15 @@ export async function processMatchEvents(match: Match) {
   }
 }
 
-export async function main() {
+export async function startBotForLeague(leagueId: number) {
   console.log(
     "-------------------------- Program start --------------------------\n"
   )
-  let fixtureItems = (await getFixturesFromLeague(SerieA, "2022")) || []
+  let fixtureItems =
+    (await getFixturesFromLeague(
+      leagueId,
+      new Date().getFullYear().toString()
+    )) || []
   let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
   let today = new Date()
 
@@ -77,7 +80,11 @@ export async function main() {
         "-------------------------- New day! --------------------------\n"
       )
       today = new Date()
-      fixtureItems = (await getFixturesFromLeague(SerieA, "2022")) || []
+      fixtureItems =
+        (await getFixturesFromLeague(
+          leagueId,
+          new Date().getFullYear().toString()
+        )) || []
       let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
       console.log(`--- Today is: ${today.toDateString()}\n`)
       tournamentStore.setMatches(matches)

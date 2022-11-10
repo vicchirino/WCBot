@@ -1,3 +1,4 @@
-import { main } from "./app"
+import { startBotForLeague } from "./app"
+require("dotenv").config()
 
-main()
+startBotForLeague(+(process.env.BOT_LEAGUE_ID || 0))
