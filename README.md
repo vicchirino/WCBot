@@ -36,4 +36,4 @@ You can run the tests with `yarn test` or `npm test`.
 - [API-Football](https://www.api-football.com)
 - [Typescript](https://www.typescriptlang.org)
 - [Twitter API](https://github.com/plhery/node-twitter-api-v2#readme)
-- [Axios](<[axios](https://axios-http.com/docs/intro)>)
+- [Axios](https://axios-http.com/docs/intro)
