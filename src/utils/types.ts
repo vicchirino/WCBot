@@ -98,7 +98,7 @@ export type MatchEvent = {
     id: number | null
     name: string | null
   }
-  type: "Goal" | "Card" | "Subst" | "Var"
+  type: "Goal" | "Card" | "subst" | "Var"
   detail:
     | "Normal Goal"
     | "Penalty"
@@ -109,6 +109,13 @@ export type MatchEvent = {
     | "Goal cancelled"
     | "Penalty confirmed"
     | "Second Yellow card"
+    | "Substitution 1"
+    | "Substitution 2"
+    | "Substitution 3"
+    | "Substitution 4"
+    | "Substitution 5"
+    | "Substitution 6"
+
   // comments: string | null;
 }
 

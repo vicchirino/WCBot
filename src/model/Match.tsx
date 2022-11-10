@@ -86,60 +86,91 @@ export class Match {
     )
   }
 
-  getTweetTextForEvent(event: MatchEvent): string {
-    if (event.type === "Goal") {
-      if (event.detail === "Penalty") {
-        return `➡️  Penalty scored!!\n\n⚽ ${event.player.name} - ${
-          event.team.name
-        }\n\n⏰ ${event.time.elapsed}min ${this.teams().home.name} ${
+  getTextForEvent(matchEvent: MatchEvent): string {
+    if (matchEvent.type === "Goal") {
+      if (matchEvent.detail === "Penalty") {
+        return `➡️  Penalty scored!!\n\n⚽ ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
           this.goals().home
         } - ${this.goals().away} ${this.teams().away.name}`
       }
-      if (event.detail === "Own Goal") {
-        return `➡️  Own Goal\n\n⚽${event.player.name} - ${
-          event.team.name
-        }\n\n⏰ ${event.time.elapsed}min ${this.teams().home.name} ${
+      if (matchEvent.detail === "Own Goal") {
+        return `➡️  Own Goal\n\n⚽ ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
           this.goals().home
         } - ${this.goals().away} ${this.teams().away.name}`
       }
-      if (event.detail === "Normal Goal") {
-        return `➡️  Goal\n\n⚽ ${event.player.name} - ${event.team.name}\n${
-          event.assist.name ? `👥 ${event.assist.name}` : ""
-        }\n${this.teams().home.name} ${this.goals().home} - ${
-          this.goals().away
-        } ${this.teams().away.name}\n⏰ ${event.time.elapsed}min`
+      if (matchEvent.detail === "Normal Goal") {
+        return `➡️  Goal!!\n\n⚽ ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }${
+          matchEvent.assist.name ? `\n👥 ${matchEvent.assist.name}` : ""
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
       }
-      if (event.detail === "Missed Penalty") {
-        return `➡️ Missed Penalty\n❌${event.player.name}\n\n⏰ ${
-          event.time.elapsed
-        }min ${this.teams().home.name} ${this.goals().home} - ${
+      if (matchEvent.detail === "Missed Penalty") {
+        return `➡️ Missed Penalty\n❌ ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
+      }
+    }
+    if (matchEvent.type === "Card") {
+      if (matchEvent.detail === "Yellow Card") {
+        return `➡️ Yellow card\n🟡 ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
+      }
+      if (matchEvent.detail === "Second Yellow card") {
+        return `➡️ Second yellow card\n🟡🟡 ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
+      }
+      if (matchEvent.detail === "Red Card") {
+        return `➡️ Red card\n🔴 ${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
+      }
+    }
+    if (matchEvent.type === "Var") {
+      if (matchEvent.detail === "Goal cancelled") {
+        return `🔎 Var - Goal cancelled!\n\n${matchEvent.player.name} - ${
+          matchEvent.team.name
+        }\n\n⏰ ${matchEvent.time.elapsed}' ${this.teams().home.name} ${
+          this.goals().home
+        } - ${this.goals().away} ${this.teams().away.name}`
+      }
+      if (matchEvent.detail === "Penalty confirmed") {
+        return `🔎 Var - Penalty confirmed for ${matchEvent.team.name}\n\n⏰ ${
+          matchEvent.time.elapsed
+        }' ${this.teams().home.name} ${this.goals().home} - ${
           this.goals().away
         } ${this.teams().away.name}`
       }
     }
-    if (event.type === "Card") {
-      if (event.detail === "Yellow Card") {
-        return `${this.teams().home.name} ${this.goals().home} - ${
-          this.goals().away
-        } ${this.teams().away.name}\n🟡 ${event.player.name} - ${
-          event.team.name
-        } \n⏰ ${event.time.elapsed}min`
-      }
-      if (event.detail === "Second Yellow card") {
-        return `${this.teams().home.name} ${this.goals().home} - ${
-          this.goals().away
-        } ${this.teams().away.name}\n🟡🟡 ${event.player.name} - ${
-          event.team.name
-        } \n⏰ ${event.time.elapsed}min`
-      }
-      if (event.detail === "Red Card") {
-        return `${this.teams().home.name} ${this.goals().home} - ${
-          this.goals().away
-        } ${this.teams().away.name}\n🔴 ${event.player.name} - ${
-          event.team.name
-        } \n⏰ ${event.time.elapsed}min`
-      }
+    if (matchEvent.type === "subst") {
+      return `🔄 Substituion - ${matchEvent.team.name}\n\n➡️ ${
+        matchEvent.player.name
+      }\n⬅️ ${matchEvent.assist.name}\n⏰ ${matchEvent.time.elapsed}' ${
+        this.teams().home.name
+      } ${this.goals().home} - ${this.goals().away} ${this.teams().away.name}`
     }
     return ""
+  }
+
+  getTextForReadyToStart(): string {
+    return `⚽️ ${this.teams().home.name} vs ${
+      this.teams().away.name
+    } is about to start!`
   }
 }

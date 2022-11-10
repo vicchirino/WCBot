@@ -1,4 +1,4 @@
-import { FixtureItem } from "../../utils/types"
+import { FixtureItem, MatchEventWithId } from "../../utils/types"
 import {
   areMatchesToPost,
   compareMatchDates,
@@ -195,43 +195,23 @@ describe("domain/match", () => {
       })
     })
 
-    describe("postEventsOfFixture", () => {
-      let match: Match
-      let fixtureItem: FixtureItem
-      beforeEach(() => {
-        fixtureItem = worldCupLiveFixturesMock.response[0] as FixtureItem
-        const fixtureDate = new Date(fixtureItem.fixture.date)
-        fixtureItem.fixture.date = new Date(
-          fixtureDate.getTime() - 40 * 60 * 1000
-        ).toString()
-        getLiveFixtureMocked
-          // Mock the first call wih the same fixtureItem but the date is 40 minutes before the current time.
-          .mockReturnValueOnce(Promise.resolve(fixtureItem as FixtureItem))
-          // Mock second call with the same fixtureItem but the status is now "FT" (full time)
-          .mockReturnValueOnce(
-            Promise.resolve({
-              ...fixtureItem,
-              fixture: { ...fixtureItem.fixture, status: { short: "FT" } },
-            } as FixtureItem)
-          )
+    describe("postEventsOfMatch", () => {
+      const liveFixture = worldCupLiveFixturesMock.response[0] as FixtureItem
+      const match = new Match(liveFixture)
+      const matchEvents: MatchEventWithId[] =
+        liveFixture.events?.map(matchEvent => {
+          return { ...matchEvent, id: 1 } as MatchEventWithId
+        }) || []
+      it("call post twitter functions correctly", async () => {
+        const _ = await postEventsOfMatch(match, matchEvents)
+        expect(postTweetsMocked).toHaveBeenCalled()
+        expect(postTweetsMocked).toHaveBeenCalledTimes(1)
+        expect(postTweetsMocked).toHaveBeenCalledWith(
+          match
+            .matchEvents()
+            .map(matchEvent => match.getTextForEvent(matchEvent))
+        )
       })
-
-      it(
-        "call post twitter functions correctly",
-        async () => {
-          match = new Match(fixtureItem)
-          const _ = await postEventsOfMatch(match)
-          const getTweetTextForEvent = jest.spyOn(match, "getTweetTextForEvent")
-          expect(postTweetsMocked).toHaveBeenCalled()
-          expect(postTweetsMocked).toHaveBeenCalledTimes(1)
-          expect(postTweetsMocked).toHaveBeenCalledWith(
-            match
-              .matchEvents()
-              .map(matchEvent => match.getTweetTextForEvent(matchEvent))
-          )
-        },
-        60000 * 3
-      )
     })
   })
 })
