@@ -1,8 +1,8 @@
-### Footbal Notifications bot
+## Footbal Notifications bot
 
 This is a bot that sends notifications about football matches to Twitter.
 
-## Notifications
+### Notifications
 
 - When a match is about to start
 - When a match starts
@@ -12,7 +12,7 @@ This is a bot that sends notifications about football matches to Twitter.
   - Substitutions
 - When a match ends
 
-## Setup
+### Setup
 
 For getting this bot running locally you need to have a few things:
 
@@ -22,16 +22,16 @@ For getting this bot running locally you need to have a few things:
 - Setup all the mentioned values in an environment file. You can use the `.env.example` file as a template.
 - Install the dependencies with `yarn` or `npm install`.
 
-## Run
+### Run
 
 The app start running `yarn start` or `npm start`.
 The app will make 1 request for getting the matches and 1 request per minute for each live match.
 
-## Tests
+### Tests
 
 You can run the tests with `yarn test` or `npm test`.
 
-## Built with
+### Built with
 
 - [API-Football](https://www.api-football.com)
 - [Typescript](https://www.typescriptlang.org)
