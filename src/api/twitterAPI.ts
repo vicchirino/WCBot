@@ -20,6 +20,17 @@ export async function postTweet(text: string) {
     })
 }
 
+export async function postTweetWithPoll(text: string, options: string[]) {
+  return twitterClient.v2
+    .tweet(text, { poll: { duration_minutes: 60, options } })
+    .then(res => {
+      console.log("RESPONSE: ", res)
+    })
+    .catch(err => {
+      console.log("ERROR: ", err)
+    })
+}
+
 export async function postTweets(tweets: string[]) {
   for (const tweet of tweets) {
     console.log("## Post tweet:")
