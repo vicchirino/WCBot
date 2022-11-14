@@ -37,7 +37,7 @@ export async function processMatchEvents(match: Match) {
       liveMatch.fixtureId(),
       liveMatch.matchEvents()
     )
-    let matchEvents = tournamentStore.getLiveMatchesEventsNotPosted(
+    const matchEvents = tournamentStore.getLiveMatchesEventsNotPosted(
       liveMatch.fixtureId()
     )
     if (matchEvents.length > 0) {
@@ -65,7 +65,7 @@ export async function startBotForLeague(leagueId: number) {
       leagueId,
       new Date().getFullYear().toString()
     )) || []
-  let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+  const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
   let today = new Date()
 
   console.log(`--- Today is: ${today.toDateString()}\n`)
@@ -86,7 +86,7 @@ export async function startBotForLeague(leagueId: number) {
           leagueId,
           new Date().getFullYear().toString()
         )) || []
-      let matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
       console.log(`--- Today is: ${today.toDateString()}\n`)
       tournamentStore.setMatches(matches)
       console.log(`--- Matches: ${tournamentStore.matchesFromToday.length}.\n`)
@@ -97,7 +97,7 @@ export async function startBotForLeague(leagueId: number) {
         "-------------------------- Matches ready to post! --------------------------\n"
       )
       // Post Matches polls
-      let matchesPollsNotPosted = tournamentStore.getMatchesPollsNotPosted()
+      const matchesPollsNotPosted = tournamentStore.getMatchesPollsNotPosted()
       if (matchesPollsNotPosted.length > 0) {
         console.log(
           "-------------------------- Post Matches polls --------------------------\n"
@@ -109,7 +109,7 @@ export async function startBotForLeague(leagueId: number) {
         tournamentStore.setMatchesPollsPosted()
       }
       // Post Matches ready to start
-      let matchesNearToStartNotPosted =
+      const matchesNearToStartNotPosted =
         tournamentStore.getMatchesNearToStartNotPosted()
       if (matchesNearToStartNotPosted.length > 0) {
         console.log(
@@ -123,7 +123,7 @@ export async function startBotForLeague(leagueId: number) {
       }
 
       // Post events of matches live
-      let liveMatchesNotPosted = tournamentStore.getLiveMatchesNotPosted()
+      const liveMatchesNotPosted = tournamentStore.getLiveMatchesNotPosted()
       if (liveMatchesNotPosted.length > 0) {
         console.log(
           "-------------------------- Post events of live matches --------------------------\n"

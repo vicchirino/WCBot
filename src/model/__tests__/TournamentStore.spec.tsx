@@ -92,7 +92,7 @@ describe("TournamentStore", () => {
   })
 
   describe("setLiveFixturesEvents", () => {
-    let fixtureId = 1
+    const fixtureId = 1
     let matchEvents: MatchEvent[] = []
     beforeEach(() => {
       matchEvents = [
@@ -244,7 +244,7 @@ describe("TournamentStore", () => {
   })
 
   describe("getLiveFixturesEventsNotPosted", () => {
-    let fixtureId = 1
+    const fixtureId = 1
     let matchEvents: MatchEvent[] = []
     beforeEach(() => {
       matchEvents = [

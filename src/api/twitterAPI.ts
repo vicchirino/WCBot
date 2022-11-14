@@ -1,6 +1,7 @@
 import { TwitterApi } from "twitter-api-v2"
 import { sleep } from "../utils"
-require("dotenv").config()
+import dotenv from "dotenv"
+dotenv.config()
 
 const twitterClient = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY || "",

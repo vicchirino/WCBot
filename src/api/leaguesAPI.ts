@@ -9,7 +9,5 @@ export const SerieA = 135
 
 export async function getLeague(leagueID: number) {
   const result = await getRequest<LeagueResponse>("leagues", { id: leagueID })
-  result.response.map(leagueItem => {
-    console.log(`## ${leagueItem.league.name} - ${leagueItem.country.name}`)
-  })
+  return result.response
 }

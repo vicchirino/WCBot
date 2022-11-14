@@ -59,26 +59,26 @@ type Player = {
 
 type Coverage = {
   fixtures: {
-    events: Boolean
-    lineups: Boolean
-    statistics_fixtures: Boolean
-    statistics_players: Boolean
+    events: boolean
+    lineups: boolean
+    statistics_fixtures: boolean
+    statistics_players: boolean
   }
-  standings: Boolean
-  players: Boolean
-  top_scorers: Boolean
-  top_assists: Boolean
-  top_cards: Boolean
-  injuries: Boolean
-  predictions: Boolean
-  odds: Boolean
+  standings: boolean
+  players: boolean
+  top_scorers: boolean
+  top_assists: boolean
+  top_cards: boolean
+  injuries: boolean
+  predictions: boolean
+  odds: boolean
 }
 
 type Season = {
   year: number
   start: string
   end: string
-  current: Boolean
+  current: boolean
   coverage: Coverage
 }
 
@@ -152,6 +152,10 @@ type LeagueItem = {
   seasons: Season[]
 }
 
+type TeamItem = {
+  team: Team
+}
+
 type DefaultResponse = {
   errors: {
     token: string | null
@@ -173,4 +177,8 @@ export type EventResponse = {
 
 export type LeagueResponse = {
   response: LeagueItem[]
+} & DefaultResponse
+
+export type TeamsResponse = {
+  response: TeamItem[]
 } & DefaultResponse

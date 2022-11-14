@@ -1,6 +1,6 @@
 import { postTweet, postTweets, postTweetWithPoll } from "../api/twitterAPI"
 import { Match } from "../model/Match"
-import { MatchEventWithId } from "../utils/types"
+import { MatchEventWithId, Team } from "../utils/types"
 
 // Match domain helper functions
 
@@ -75,6 +75,11 @@ export function postPollsMatches(matches: Match[]) {
       "Draw",
     ])
   })
-  // postPollsMatches(matches.map(match => match.getTextForPoll()))
-  // postTweets(matches.map(match => match.getTextForPolls()))
+}
+
+export function postInitialPoll(teams: Team[]) {
+  postTweetWithPoll(
+    "Who will win the World Cup?",
+    teams.map(team => team.name)
+  )
 }

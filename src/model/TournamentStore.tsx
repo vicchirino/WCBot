@@ -23,8 +23,6 @@ export class TournamentStore {
 
   matchesFromToday: Match[] = []
 
-  private constructor() {}
-
   public static getInstance(): TournamentStore {
     if (!TournamentStore.instance) {
       TournamentStore.instance = new TournamentStore()

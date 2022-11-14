@@ -12,11 +12,11 @@ export class Match {
     return this.fixtureItem.teams
   }
 
-  homeTeamName(rtl: boolean = true): string {
+  homeTeamName(rtl = true): string {
     return teamNameWithFlag(this.teams().home.name, rtl)
   }
 
-  awayTeamName(rtl: boolean = true): string {
+  awayTeamName(rtl = true): string {
     return teamNameWithFlag(this.teams().away.name, rtl)
   }
 
