@@ -31,6 +31,10 @@ The app will make 1 request for getting the matches and 1 request per minute for
 
 You can run the tests with `yarn test` or `npm test`.
 
+### Production bot
+
+(@FIFAWCBot)[https://twitter.com/FIFAWCBot]
+
 ### Built with
 
 - [API-Football](https://www.api-football.com)
