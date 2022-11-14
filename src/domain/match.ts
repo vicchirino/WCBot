@@ -1,4 +1,4 @@
-import { postTweet, postTweets } from "../api/twitterAPI"
+import { postTweet, postTweets, postTweetWithPoll } from "../api/twitterAPI"
 import { Match } from "../model/Match"
 import { MatchEventWithId } from "../utils/types"
 
@@ -6,14 +6,14 @@ import { MatchEventWithId } from "../utils/types"
 
 /**
  * If now is between the first and last match of the day, there are live fixtures.
- * first: firstMatchOfTheDayDate - 20 minutes
+ * first: firstMatchOfTheDayDate - 60 minutes
  * last: lastMatchOfTheDayDate + 120 minutes
  */
 
 export function areMatchesToPost(match: Match[]): boolean {
   const now = new Date()
   const estimatedMatchDuration = 120 * 60 * 1000 // 120 minutes
-  const nearToStartEstimatedTime = 20 * 60 * 1000 // 20 minutes
+  const nearToStartEstimatedTime = 60 * 60 * 1000 // 60 minutes
   if (match.length === 0) {
     return false
   }
@@ -65,4 +65,16 @@ export function postMatchFinished(match: Match) {
 
 export function postMatchStarted(matches: Match[]) {
   postTweets(matches.map(match => match.getTextForStarted()))
+}
+
+export function postPollsMatches(matches: Match[]) {
+  matches.map(match => {
+    postTweetWithPoll(match.getTextForPolls(), [
+      match.homeTeamName(),
+      match.awayTeamName(),
+      "Draw",
+    ])
+  })
+  // postPollsMatches(matches.map(match => match.getTextForPoll()))
+  // postTweets(matches.map(match => match.getTextForPolls()))
 }

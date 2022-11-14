@@ -5,6 +5,7 @@ import {
   postMatchFinished,
   postMatchStarted,
   postReadyToStartMatches,
+  postPollsMatches,
 } from "./domain/match"
 import { TournamentStore } from "./model/TournamentStore"
 import { Match } from "./model/Match"
@@ -95,6 +96,18 @@ export async function startBotForLeague(leagueId: number) {
       console.log(
         "-------------------------- Matches ready to post! --------------------------\n"
       )
+      // Post Matches polls
+      let matchesPollsNotPosted = tournamentStore.getMatchesPollsNotPosted()
+      if (matchesPollsNotPosted.length > 0) {
+        console.log(
+          "-------------------------- Post Matches polls --------------------------\n"
+        )
+        console.log(
+          `--- Matches near to start: ${matchesPollsNotPosted.length}.\n`
+        )
+        postPollsMatches(matchesPollsNotPosted)
+        tournamentStore.setMatchesPollsPosted()
+      }
       // Post Matches ready to start
       let matchesNearToStartNotPosted =
         tournamentStore.getMatchesNearToStartNotPosted()

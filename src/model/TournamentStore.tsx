@@ -15,6 +15,8 @@ export class TournamentStore {
   private _matches: Match[] = []
   private liveMatches: Match[] = []
   private liveMatchesPosted: Match[] = []
+  private matchesPolls: Match[] = []
+  private matchesPollsPosted: Match[] = []
   private matchesNearToStart: Match[] = []
   private matchesNearToStartPosted: Match[] = []
   private _matchesEvents: MatchesEvents = {}
@@ -65,6 +67,23 @@ export class TournamentStore {
   public setLiveMatchesPosted() {
     this.liveMatchesPosted = this.liveMatchesPosted.concat(
       this.getLiveMatchesNotPosted()
+    )
+  }
+
+  public getMatchesPollsNotPosted(): Match[] {
+    this.matchesPolls = this._matches.filter(
+      match =>
+        match.isFixtureReadyToPostPoll() &&
+        !this.matchesPollsPosted.find(
+          matchPosted => matchPosted.fixtureId() === match.fixtureId()
+        )
+    )
+    return this.matchesPolls
+  }
+
+  public setMatchesPollsPosted() {
+    this.matchesPollsPosted = this.matchesPollsPosted.concat(
+      this.getMatchesPollsNotPosted()
     )
   }
 

@@ -24,6 +24,10 @@ export class Match {
     return this.fixtureItem.goals
   }
 
+  getVenue(): string {
+    return `${this.fixtureItem.fixture?.venue.name}, ${this.fixtureItem.fixture?.venue.city}`
+  }
+
   fixtureDate(): Date {
     return new Date(this.fixtureItem.fixture.date)
   }
@@ -73,6 +77,18 @@ export class Match {
   isFixtureNearToStart(): boolean {
     // 20 minutes before the match
     const minutes = 20
+    const fixtureDate = this.fixtureDate()
+    const now = new Date()
+    if (fixtureDate < now) {
+      return false
+    }
+    const nowWithMinutes = new Date(now.getTime() + minutes * 60 * 1000)
+    return nowWithMinutes > fixtureDate
+  }
+
+  isFixtureReadyToPostPoll(): boolean {
+    // 60 minutes before the match
+    const minutes = 60
     const fixtureDate = this.fixtureDate()
     const now = new Date()
     if (fixtureDate < now) {
@@ -201,7 +217,7 @@ export class Match {
   getTextForReadyToStart(): string {
     return `🔔 ${this.teams().home.name} vs ${
       this.teams().away.name
-    } is about to start!\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}`
+    } is about to start!\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}\n\n🏟 ${this.getVenue()}`
   }
 
   getTextForFinished(): string {
@@ -211,6 +227,14 @@ export class Match {
   }
 
   getTextForStarted(): string {
-    return `⏰ Kick off: ${this.homeTeamName()} - ${this.awayTeamName(false)}`
+    return `⏰ Kick off: ${this.homeTeamName()} - ${this.awayTeamName(
+      false
+    )}\n\n🏟 ${this.getVenue()}`
+  }
+
+  getTextForPolls(): string {
+    return `${this.teams().home.name} vs ${
+      this.teams().away.name
+    }\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}\n\nWho's going to win?\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
   }
 }

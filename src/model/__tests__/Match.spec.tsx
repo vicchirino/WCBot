@@ -112,6 +112,43 @@ describe("Match", () => {
     })
   })
 
+  describe("isFixtureReadyToPostPoll", () => {
+    let fixtureItem: FixtureItem
+    const now = new Date()
+
+    it("return false if the match is in the past", () => {
+      const days = 5
+      const fixtureDate = new Date(now.getDate() - days)
+      fixtureItem = {
+        fixture: { id: 1, date: fixtureDate.toString() },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.isFixtureReadyToPostPoll()).toBe(false)
+    })
+
+    it("return true if the match is <= 60 minutes away", () => {
+      // Ten minutes in milliseconds
+      const tenMinutes = 59 * 1000 * 60
+      const fixtureDate = new Date(now.getTime() + tenMinutes)
+      fixtureItem = {
+        fixture: { id: 1, date: fixtureDate.toString() },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.isFixtureReadyToPostPoll()).toBe(true)
+    })
+
+    it("return false if the match is > 60 minutes away", () => {
+      // thirty minutes in milliseconds
+      const thirtyMinutes = 70 * 1000 * 60
+      const fixtureDate = new Date(now.getTime() + thirtyMinutes)
+      fixtureItem = {
+        fixture: { id: 1, date: fixtureDate.toString() },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.isFixtureReadyToPostPoll()).toBe(false)
+    })
+  })
+
   describe("isFixtureNearToStart", () => {
     let fixtureItem: FixtureItem
     const now = new Date()
@@ -231,7 +268,11 @@ describe("Match", () => {
   describe("getTextForStarted", () => {
     it("return the correct text", () => {
       const fixtureItem = {
-        fixture: { id: 1, date: new Date().toDateString() },
+        fixture: {
+          id: 1,
+          date: new Date().toDateString(),
+          venue: { name: "La Bombonera", city: "Buenos Aires" },
+        },
         teams: {
           home: {
             id: 13,
@@ -249,7 +290,35 @@ describe("Match", () => {
       } as FixtureItem
       match = new Match(fixtureItem)
       expect(match.getTextForStarted()).toBe(
-        `⏰ Kick off: 🇸🇳 Senegal - Netherlands 🇳🇱`
+        `⏰ Kick off: 🇸🇳 Senegal - Netherlands 🇳🇱\n\n🏟 La Bombonera, Buenos Aires`
+      )
+    })
+  })
+
+  describe("getTextForPolls", () => {
+    it("return the correct text", () => {
+      const fixtureItem = {
+        fixture: { id: 1, date: new Date().toDateString() },
+        teams: {
+          home: {
+            id: 13,
+            name: "Senegal",
+          },
+          away: {
+            id: 1118,
+            name: "Netherlands",
+          },
+        },
+        goals: {
+          home: 1,
+          away: 2,
+        },
+      } as FixtureItem
+      match = new Match(fixtureItem)
+      expect(match.getTextForPolls()).toBe(
+        `Senegal vs Netherlands\n\n⏰ ${new Date(
+          fixtureItem.fixture.date
+        ).toLocaleTimeString()}\n\nWho's going to win?\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       )
     })
   })
@@ -257,7 +326,11 @@ describe("Match", () => {
   describe("getTextForReadyToStart", () => {
     it("return the correct text", () => {
       const fixtureItem = {
-        fixture: { id: 1, date: new Date().toDateString() },
+        fixture: {
+          id: 1,
+          date: new Date().toDateString(),
+          venue: { name: "La Bombonera", city: "Buenos Aires" },
+        },
         teams: {
           home: {
             id: 13,
@@ -273,7 +346,7 @@ describe("Match", () => {
       expect(match.getTextForReadyToStart()).toBe(
         `🔔 Senegal vs Netherlands is about to start!\n\n⏰ ${new Date(
           fixtureItem.fixture.date
-        ).toLocaleTimeString()}`
+        ).toLocaleTimeString()}\n\n🏟 La Bombonera, Buenos Aires`
       )
     })
   })

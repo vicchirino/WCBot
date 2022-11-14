@@ -91,6 +91,101 @@ describe("TournamentStore", () => {
     })
   })
 
+  describe("setLiveFixturesEvents", () => {
+    let fixtureId = 1
+    let matchEvents: MatchEvent[] = []
+    beforeEach(() => {
+      matchEvents = [
+        {
+          time: {
+            elapsed: 13,
+          },
+          type: "Goal",
+        } as MatchEvent,
+        {
+          time: {
+            elapsed: 18,
+          },
+          type: "Goal",
+        } as MatchEvent,
+        {
+          time: {
+            elapsed: 50,
+          },
+          type: "Card",
+        } as MatchEvent,
+      ]
+    })
+
+    it("set correctly live events for the fixture", () => {
+      const tournamentStore = TournamentStore.getInstance()
+      tournamentStore.setLiveMatchesEvents(fixtureId, matchEvents)
+
+      const matchevents = tournamentStore.matchesEvents[fixtureId]
+      expect(matchevents.liveMatchesEventsWithId).toHaveLength(3)
+      expect(matchevents.liveMatchesEventsWithId[0].time.elapsed).toEqual(13)
+      expect(matchevents.liveMatchesEventsWithId[1].time.elapsed).toEqual(18)
+      expect(matchevents.liveMatchesEventsWithId[2].time.elapsed).toEqual(50)
+    })
+  })
+
+  describe("getMatchesPollsNotPosted", () => {
+    beforeEach(() => {
+      const today = new Date()
+      const thirtyMinutes = 30 * 1000 * 60
+      const fixtureDateOne = new Date(today.getTime() + thirtyMinutes)
+      const fiftyNineMinutes = 59 * 1000 * 60
+      const fixtureDateTwo = new Date(today.getTime() + fiftyNineMinutes)
+      const seventyMinutes = 70 * 1000 * 60
+      const fixtureDateThree = new Date(today.getTime() + seventyMinutes)
+      const eightyMinutes = 80 * 1000 * 60
+      const fixtureDateFour = new Date(today.getTime() + eightyMinutes)
+      fixtureItems = [
+        {
+          fixture: {
+            id: 1,
+            date: fixtureDateOne.toString(),
+          },
+        },
+        {
+          fixture: {
+            id: 2,
+            date: fixtureDateTwo.toString(),
+          },
+        },
+        {
+          fixture: {
+            id: 3,
+            date: fixtureDateThree.toString(),
+          },
+        },
+        {
+          fixture: {
+            id: 4,
+            date: fixtureDateFour.toString(),
+          },
+        },
+      ] as FixtureItem[]
+    })
+
+    it("return all fixtures that are ready to post poll", () => {
+      const tournamentStore = TournamentStore.getInstance()
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      expect(tournamentStore.getMatchesPollsNotPosted().length).toBe(
+        fixtureItems.length - 2
+      )
+    })
+
+    it("return no fixtures when were already posted", () => {
+      const tournamentStore = TournamentStore.getInstance()
+      const matches = fixtureItems.map(fixtureItem => new Match(fixtureItem))
+      tournamentStore.setMatches(matches)
+      tournamentStore.setMatchesPollsPosted()
+      expect(tournamentStore.getMatchesPollsNotPosted().length).toBe(0)
+    })
+  })
+
   describe("getMatchesNearToStartNotPosted", () => {
     beforeEach(() => {
       const today = new Date()
@@ -145,44 +240,6 @@ describe("TournamentStore", () => {
       tournamentStore.setMatches(matches)
       tournamentStore.setMatchesNearToStartPosted()
       expect(tournamentStore.getMatchesNearToStartNotPosted().length).toBe(0)
-    })
-  })
-
-  describe("setLiveFixturesEvents", () => {
-    let fixtureId = 1
-    let matchEvents: MatchEvent[] = []
-    beforeEach(() => {
-      matchEvents = [
-        {
-          time: {
-            elapsed: 13,
-          },
-          type: "Goal",
-        } as MatchEvent,
-        {
-          time: {
-            elapsed: 18,
-          },
-          type: "Goal",
-        } as MatchEvent,
-        {
-          time: {
-            elapsed: 50,
-          },
-          type: "Card",
-        } as MatchEvent,
-      ]
-    })
-
-    it("set correctly live events for the fixture", () => {
-      const tournamentStore = TournamentStore.getInstance()
-      tournamentStore.setLiveMatchesEvents(fixtureId, matchEvents)
-
-      const matchevents = tournamentStore.matchesEvents[fixtureId]
-      expect(matchevents.liveMatchesEventsWithId).toHaveLength(3)
-      expect(matchevents.liveMatchesEventsWithId[0].time.elapsed).toEqual(13)
-      expect(matchevents.liveMatchesEventsWithId[1].time.elapsed).toEqual(18)
-      expect(matchevents.liveMatchesEventsWithId[2].time.elapsed).toEqual(50)
     })
   })
 

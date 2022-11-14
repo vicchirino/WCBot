@@ -4,11 +4,17 @@ export type Fixture = {
   timezone: string
   date: string
   timestamp: number
+  venue: Venue
   status: {
     long: string | null
     short: string | null
     elapsed: number | null
   }
+}
+
+type Venue = {
+  name: string
+  city: string
 }
 
 type League = {
