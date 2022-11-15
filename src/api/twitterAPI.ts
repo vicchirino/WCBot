@@ -36,7 +36,7 @@ export async function postTweets(tweets: string[]) {
   for (const tweet of tweets) {
     console.log("## Post tweet:")
     console.log(tweet)
-    // postTweet(tweet)
+    postTweet(tweet)
     console.log("-----")
     await sleep(15 * 1000)
   }

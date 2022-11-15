@@ -68,10 +68,16 @@ export class Match {
 
   isFixtureHappeningNow(): boolean {
     const now = new Date()
-    const minutes = 90 * 60 * 1000
+    const nintyMinutes = 90 * 60 * 1000
+    const twoMinutes = 2 * 60 * 1000
     const fixtureDate = this.fixtureDate()
-    const fixtureEstimatedEndDate = new Date(fixtureDate.getTime() + minutes)
-    return now > fixtureDate && now < fixtureEstimatedEndDate
+    const fixtureEstimatedEndDate = new Date(
+      fixtureDate.getTime() + nintyMinutes
+    )
+    const fixtureStartDateWithMargin = new Date(
+      fixtureDate.getTime() + twoMinutes
+    )
+    return now > fixtureStartDateWithMargin && now < fixtureEstimatedEndDate
   }
 
   isFixtureNearToStart(): boolean {

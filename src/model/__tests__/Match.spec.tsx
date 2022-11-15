@@ -91,8 +91,8 @@ describe("Match", () => {
 
     it("return true if the match is currently live and the status is not present", () => {
       // One minute in milliseconds
-      const oneMinute = 1 * 1000 * 60
-      const fixtureDate = new Date(now.getTime() - oneMinute)
+      const threeMinute = 3 * 1000 * 60
+      const fixtureDate = new Date(now.getTime() - threeMinute)
       fixtureItem = {
         fixture: { id: 1, date: fixtureDate.toString() },
       } as FixtureItem
