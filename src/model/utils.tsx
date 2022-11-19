@@ -1,8 +1,5 @@
-export const teamNameWithFlag = (
-  teamName: string,
-  rtl: boolean = false
-): string => {
-  let flag: string = ""
+export const teamNameWithFlag = (teamName: string, rtl = false): string => {
+  let flag = ""
   switch (teamName) {
     case "Qatar":
       flag = "🇶🇦"

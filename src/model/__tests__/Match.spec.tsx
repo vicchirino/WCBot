@@ -90,9 +90,9 @@ describe("Match", () => {
     })
 
     it("return true if the match is currently live and the status is not present", () => {
-      // One minute in milliseconds
-      const threeMinute = 3 * 1000 * 60
-      const fixtureDate = new Date(now.getTime() - threeMinute)
+      // Four minute in milliseconds
+      const fourMinutes = 4 * 1000 * 60
+      const fixtureDate = new Date(now.getTime() - fourMinutes)
       fixtureItem = {
         fixture: { id: 1, date: fixtureDate.toString() },
       } as FixtureItem
@@ -260,7 +260,7 @@ describe("Match", () => {
       } as FixtureItem
       match = new Match(fixtureItem)
       expect(match.getTextForFinished()).toBe(
-        `⏰ End of match\n\n🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱`
+        `⏰ End of match\n\n🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       )
     })
   })
@@ -290,7 +290,7 @@ describe("Match", () => {
       } as FixtureItem
       match = new Match(fixtureItem)
       expect(match.getTextForStarted()).toBe(
-        `⏰ Kick off: 🇸🇳 Senegal - Netherlands 🇳🇱\n\n🏟 La Bombonera, Buenos Aires`
+        `⏰ Kick off: 🇸🇳 Senegal - Netherlands 🇳🇱\n\n🏟 La Bombonera, Buenos Aires\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       )
     })
   })
@@ -346,7 +346,7 @@ describe("Match", () => {
       expect(match.getTextForReadyToStart()).toBe(
         `🔔 Senegal vs Netherlands is about to start!\n\n⏰ ${new Date(
           fixtureItem.fixture.date
-        ).toLocaleTimeString()}\n\n🏟 La Bombonera, Buenos Aires`
+        ).toLocaleTimeString()}\n\n🏟 La Bombonera, Buenos Aires\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       )
     })
   })
@@ -396,7 +396,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️  Penalty scored!!\n\n⚽ Van Nisterloy - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "➡️  Penalty scored!!\n\n⚽ Van Nisterloy - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
       it("return correct text for Own Goal", () => {
@@ -421,7 +421,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️  Own Goal\n\n⚽ Foo - Senegal 🇸🇳\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "➡️  Own Goal\n\n⚽ Foo - Senegal 🇸🇳\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
       describe("Normal Goal", () => {
@@ -447,7 +447,7 @@ describe("Match", () => {
           } as MatchEvent
           match = new Match(fixtureItem)
           expect(match.getTextForEvent(matchEvent)).toBe(
-            "➡️  Goal!!\n\n⚽ Foo - Senegal 🇸🇳\n👥 Boo\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+            "➡️  Goal!!\n\n⚽ Foo - Senegal 🇸🇳\n👥 Boo\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
           )
         })
         it("return correct text when there is not an assist", () => {
@@ -472,7 +472,7 @@ describe("Match", () => {
           } as MatchEvent
           match = new Match(fixtureItem)
           expect(match.getTextForEvent(matchEvent)).toBe(
-            "➡️  Goal!!\n\n⚽ Foo - Senegal 🇸🇳\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+            "➡️  Goal!!\n\n⚽ Foo - Senegal 🇸🇳\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
           )
         })
       })
@@ -498,7 +498,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "➡️ Missed Penalty\n❌ Robben - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "➡️ Missed Penalty\n❌ Robben - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
     })
@@ -526,7 +526,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🟡 Yellow card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🟡 Yellow card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
 
@@ -552,7 +552,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🟡🟡 Second yellow card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🟡🟡 Second yellow card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
 
@@ -578,7 +578,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🔴 Red card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🔴 Red card\n\n👤 De Jong - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
     })
@@ -606,7 +606,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🔄 Substituion - Netherlands 🇳🇱\n\n➡️ Robben\n⬅️ Van Persie\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🔄 Substituion - Netherlands 🇳🇱\n\n➡️ Robben\n⬅️ Van Persie\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
     })
@@ -634,7 +634,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🔎 Var - Goal cancelled!\n\nRobben - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🔎 Var - Goal cancelled!\n\nRobben - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
       it("returns the correct text for Penalty confirmed", () => {
@@ -659,7 +659,7 @@ describe("Match", () => {
         } as MatchEvent
         match = new Match(fixtureItem)
         expect(match.getTextForEvent(matchEvent)).toBe(
-          "🔎 Var - Penalty confirmed for Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱"
+          "🔎 Var - Penalty confirmed for Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
     })

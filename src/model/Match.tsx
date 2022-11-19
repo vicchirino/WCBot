@@ -69,13 +69,13 @@ export class Match {
   isFixtureHappeningNow(): boolean {
     const now = new Date()
     const nintyMinutes = 90 * 60 * 1000
-    const twoMinutes = 2 * 60 * 1000
+    const threeMinutes = 3 * 60 * 1000
     const fixtureDate = this.fixtureDate()
     const fixtureEstimatedEndDate = new Date(
       fixtureDate.getTime() + nintyMinutes
     )
     const fixtureStartDateWithMargin = new Date(
-      fixtureDate.getTime() + twoMinutes
+      fixtureDate.getTime() + threeMinutes
     )
     return now > fixtureStartDateWithMargin && now < fixtureEstimatedEndDate
   }
@@ -131,7 +131,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Own Goal") {
         return `➡️  Own Goal\n\n⚽ ${
@@ -140,7 +140,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Normal Goal") {
         return `➡️  Goal!!\n\n⚽ ${matchEvent.player.name} - ${teamNameWithFlag(
@@ -149,7 +149,9 @@ export class Match {
           matchEvent.assist.name ? `\n👥 ${matchEvent.assist.name}` : ""
         }\n\n⏰ ${matchEvent.time.elapsed}' ${this.homeTeamName()} ${
           this.goals().home
-        } - ${this.goals().away} ${this.awayTeamName(false)}`
+        } - ${this.goals().away} ${this.awayTeamName(
+          false
+        )}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Missed Penalty") {
         return `➡️ Missed Penalty\n❌ ${
@@ -158,7 +160,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
     }
     if (matchEvent.type === "Card") {
@@ -169,7 +171,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Second Yellow card") {
         return `🟡🟡 Second yellow card\n\n👤 ${
@@ -178,7 +180,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Red Card") {
         return `🔴 Red card\n\n👤 ${
@@ -187,7 +189,7 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
     }
     if (matchEvent.type === "Var") {
@@ -198,14 +200,16 @@ export class Match {
           matchEvent.time.elapsed
         }' ${this.homeTeamName()} ${this.goals().home} - ${
           this.goals().away
-        } ${this.awayTeamName(false)}`
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
       if (matchEvent.detail === "Penalty confirmed") {
         return `🔎 Var - Penalty confirmed for ${teamNameWithFlag(
           matchEvent.team.name
         )}\n\n⏰ ${matchEvent.time.elapsed}' ${this.homeTeamName()} ${
           this.goals().home
-        } - ${this.goals().away} ${this.awayTeamName(false)}`
+        } - ${this.goals().away} ${this.awayTeamName(
+          false
+        )}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
     }
     if (matchEvent.type === "subst") {
@@ -215,7 +219,7 @@ export class Match {
         matchEvent.time.elapsed
       }' ${this.homeTeamName()} ${this.goals().home} - ${
         this.goals().away
-      } ${this.awayTeamName(false)}`
+      } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
     }
     return ""
   }
@@ -223,19 +227,19 @@ export class Match {
   getTextForReadyToStart(): string {
     return `🔔 ${this.teams().home.name} vs ${
       this.teams().away.name
-    } is about to start!\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}\n\n🏟 ${this.getVenue()}`
+    } is about to start!\n\n⏰ ${this.fixtureDate().toLocaleTimeString()}\n\n🏟 ${this.getVenue()}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
   }
 
   getTextForFinished(): string {
     return `⏰ End of match\n\n${this.homeTeamName()} ${this.goals().home} - ${
       this.goals().away
-    } ${this.awayTeamName(false)}`
+    } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
   }
 
   getTextForStarted(): string {
     return `⏰ Kick off: ${this.homeTeamName()} - ${this.awayTeamName(
       false
-    )}\n\n🏟 ${this.getVenue()}`
+    )}\n\n🏟 ${this.getVenue()}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
   }
 
   getTextForPolls(): string {

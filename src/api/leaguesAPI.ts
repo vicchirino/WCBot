@@ -7,6 +7,7 @@ export const EuropaLeagueID = 3
 export const LaLiga = 140
 export const SerieA = 135
 export const FACup = 45
+export const FIFAFriendlies = 10
 
 export async function getLeague(leagueID: number) {
   const result = await getRequest<LeagueResponse>("leagues", { id: leagueID })

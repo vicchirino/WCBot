@@ -26,6 +26,13 @@ export async function getFixturesFromLeague(
   return fixtureItems
 }
 
+export async function getFixture(
+  fixtureID: number
+): Promise<FixtureItem | undefined> {
+  const fixtureItems = await getFixtures({ id: fixtureID })
+  return fixtureItems.length > 0 ? fixtureItems[0] : undefined
+}
+
 export async function getLiveFixture(
   fixtureID: number,
   leagueID: number

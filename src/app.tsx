@@ -9,7 +9,11 @@ import {
 } from "./domain/match"
 import { TournamentStore } from "./model/TournamentStore"
 import { Match } from "./model/Match"
-import { getFixturesFromLeague, getLiveFixture } from "./api/fixturesAPI"
+import {
+  getFixture,
+  getFixturesFromLeague,
+  getLiveFixture,
+} from "./api/fixturesAPI"
 
 export async function processMatchEvents(match: Match) {
   let liveMatch = match
@@ -25,11 +29,15 @@ export async function processMatchEvents(match: Match) {
       liveMatch.leagueId()
     )
     if (!updatedMatch) {
-      console.log(
-        `-------------------------- Match finished ${liveFixtureId} --------------------------\n`
-      )
-      postMatchFinished(liveMatch)
-      break
+      const finishedMatch = await getFixture(liveMatch.fixtureId())
+      if (finishedMatch && new Match(finishedMatch).isFixtureFinished()) {
+        console.log(
+          `-------------------------- Match finished ${liveFixtureId} --------------------------\n`
+        )
+        postMatchFinished(liveMatch)
+        break
+      }
+      continue
     }
     liveMatch = new Match(updatedMatch)
 

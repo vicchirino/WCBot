@@ -1,6 +1,6 @@
 import { FixtureItem, MatchEventWithId } from "../utils/types"
 import worldCupLiveFixturesMock from "../utils/mocks/world_cup_live_fixtures.json"
-import { getLiveFixture } from "../api/fixturesAPI"
+import { getLiveFixture, getFixture } from "../api/fixturesAPI"
 import { Match } from "../model/Match"
 import * as app from "../app"
 import { postEventsOfMatch, postMatchFinished } from "../domain/match"
@@ -11,6 +11,7 @@ jest.mock("../domain/match")
 const getLiveFixtureMocked = getLiveFixture as jest.Mock<
   ReturnType<typeof getLiveFixture>
 >
+const getFixtureMocked = getFixture as jest.Mock<ReturnType<typeof getFixture>>
 const postEventsOfMatchMocked = postEventsOfMatch as jest.Mock<
   ReturnType<typeof postEventsOfMatch>
 >
@@ -21,8 +22,8 @@ const postMatchFinishedMocked = postMatchFinished as jest.Mock<
 describe("app", () => {
   describe("processMatchEvents", () => {
     let match: Match
-    let fixtureItem = worldCupLiveFixturesMock.response[0] as FixtureItem
-    let matchEventsWithId = fixtureItem.events?.map((matchEvent, index) => {
+    const fixtureItem = worldCupLiveFixturesMock.response[0] as FixtureItem
+    const matchEventsWithId = fixtureItem.events?.map((matchEvent, index) => {
       return { ...matchEvent, id: index }
     }) as MatchEventWithId[]
     beforeEach(() => {
@@ -37,6 +38,15 @@ describe("app", () => {
         .mockReturnValueOnce(Promise.resolve(fixtureItem as FixtureItem))
         // Mock second call will not return the fixtureItem because the match is finished.
         .mockReturnValueOnce(Promise.resolve(undefined))
+      getFixtureMocked.mockReturnValueOnce(
+        Promise.resolve({
+          ...fixtureItem,
+          fixture: {
+            ...fixtureItem.fixture,
+            status: { short: "FT", long: "adasd", elapsed: 90 },
+          },
+        })
+      )
     })
 
     it(
