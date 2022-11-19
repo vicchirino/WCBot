@@ -17,6 +17,7 @@
     "FIFA World Cup"
   ],
   "scripts": {
+    "dev": "ts-node src/index.tsx",
     "start": "ts-node src/index.tsx > src/logs/logs.log 2> src/logs/error.log &",
     "test": "jest",
     "start:server": "ts-node src/server.ts",
