@@ -148,6 +148,7 @@ export async function startBotForLeague(leagueId: number) {
       console.log(
         "-------------------------- No more matches today! --------------------------\n"
       )
+      await sleep(600 * 1000)
     }
   }
 }
