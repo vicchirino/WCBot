@@ -1,7 +1,7 @@
 import axios from "axios"
 import { NetworkCounter } from "../utils"
-
-require("dotenv").config()
+import dotenv from "dotenv"
+dotenv.config()
 
 const API_FOOTBALL_URL = process.env.API_FOOTBALL_URL
 const API_FOOTBALL_KEY = process.env.API_FOOTBALL_KEY
@@ -37,7 +37,7 @@ export function postRequest<T>(endpoint: string, parameters: any): Promise<T> {
       return res.data as Promise<T>
     })
     .catch(err => {
-      console.log("ERROR", err)
+      console.log("Error posting request", err)
       throw new Error(err)
     })
 }

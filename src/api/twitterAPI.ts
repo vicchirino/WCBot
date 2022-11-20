@@ -14,10 +14,10 @@ export async function postTweet(text: string) {
   return twitterClient.v2
     .tweet(text)
     .then(res => {
-      console.log("RESPONSE: ", res)
+      console.log("Tweet Posted")
     })
     .catch(err => {
-      console.log("ERROR: ", err)
+      console.log("Error posting tweet  : ", err)
     })
 }
 
@@ -25,10 +25,10 @@ export async function postTweetWithPoll(text: string, options: string[]) {
   return twitterClient.v2
     .tweet(text, { poll: { duration_minutes: 60, options } })
     .then(res => {
-      console.log("RESPONSE: ", res)
+      console.log("Tweet Posted")
     })
     .catch(err => {
-      console.log("ERROR: ", err)
+      console.log("Error posting tweet  : ", err)
     })
 }
 
