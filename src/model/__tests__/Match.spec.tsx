@@ -662,6 +662,31 @@ describe("Match", () => {
           "🔎 Var - Penalty confirmed for Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
         )
       })
+      it("returns the correct text for Goal cancelled by offside", () => {
+        matchEvent = {
+          time: {
+            elapsed: 14,
+          },
+          team: {
+            id: 1118,
+            name: "Netherlands",
+          },
+          player: {
+            id: 76342,
+            name: "Robben",
+          },
+          assist: {
+            id: 423423,
+            name: "Van Persie",
+          },
+          type: "Var",
+          detail: "Goal Disallowed - offside",
+        } as MatchEvent
+        match = new Match(fixtureItem)
+        expect(match.getTextForEvent(matchEvent)).toBe(
+          "🔎 Var - Goal cancelled!\n\nRobben - Netherlands 🇳🇱\n\n⏰ 14' 🇸🇳 Senegal 1 - 2 Netherlands 🇳🇱\n\n#FIFAWorldCup #Qatar2022 🏆⚽️"
+        )
+      })
     })
   })
 })

@@ -211,6 +211,15 @@ export class Match {
           false
         )}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
       }
+      if (matchEvent.detail === "Goal Disallowed - offside") {
+        return `🔎 Var - Goal cancelled!\n\n${
+          matchEvent.player.name
+        } - ${teamNameWithFlag(matchEvent.team.name)}\n\n⏰ ${
+          matchEvent.time.elapsed
+        }' ${this.homeTeamName()} ${this.goals().home} - ${
+          this.goals().away
+        } ${this.awayTeamName(false)}\n\n#FIFAWorldCup #Qatar2022 🏆⚽️`
+      }
     }
     if (matchEvent.type === "subst") {
       return `🔄 Substituion - ${teamNameWithFlag(

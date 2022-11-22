@@ -114,6 +114,7 @@ export type MatchEvent = {
     | "Missed Penalty"
     | "Goal cancelled"
     | "Penalty confirmed"
+    | "Goal Disallowed - offside"
     | "Second Yellow card"
     | "Substitution 1"
     | "Substitution 2"
