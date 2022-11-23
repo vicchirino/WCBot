@@ -18,6 +18,7 @@ export const teamNameWithFlag = (teamName: string, rtl = false): string => {
       break
     case "Belgium":
       flag = "🇧🇪"
+      break
     case "Serbia":
       flag = "🇷🇸"
       break
