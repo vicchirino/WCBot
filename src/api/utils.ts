@@ -17,12 +17,15 @@ export function getRequest<T>(endpoint: string, parameters: any): Promise<T> {
     .get(`${API_FOOTBALL_URL}${endpoint}`, { params: parameters })
     .then(res => {
       if (res.status !== 200) {
-        throw new Error(res.statusText)
+        // throw new Error(res.statusText)
+        console.error(res.statusText)
+        return Promise.reject([])
       }
       return res.data as Promise<T>
     })
     .catch(err => {
-      throw new Error(err)
+      console.error(err)
+      return Promise.reject([])
     })
 }
 
