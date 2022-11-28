@@ -33,7 +33,7 @@ You can run the tests with `yarn test` or `npm test`.
 
 ### Production bot
 
-(@FIFAWCBot)[https://twitter.com/FIFAWCBot]
+[@FIFAWCBot](https://twitter.com/FIFAWCBot)
 
 ### Built with
 
